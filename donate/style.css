@@ -1,3 +1,139 @@
+nav {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 60px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:100;
+    background:rgba(255,255,255,0);
+    transition:.25s ease;
+}
+
+
+nav.scrolled {
+    background:white;
+}
+
+.logo {
+    font-size:22px;
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.logo.scrolled {
+    color:var(--p-blue);
+}
+
+.nav-links {
+    display:flex;
+    gap:55px;
+    list-style:none;
+}
+
+.nav-links a {
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    font-size:20px;
+}
+
+.nav-links a.scrolled {
+    color:#0b2d4a;
+}
+nav.scrolled .logo-text h3,
+nav.scrolled .logo-text p {
+    color: #0b2d4a;
+}
+nav.scrolled .logo-text p {
+    opacity: 0.7;
+}
+.donate-btn.scrolled {
+    color: #0b2d4a;
+    background: #f2f4f7;
+    border: 3px solid #0b2d4a;
+}
+.donate-btn.scrolled:hover {
+    background: #e5e7eb;
+}
+.nav-links a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    transform: translateY(-3px);
+}
+.donate-btn:hover {
+    background-color: var(--mist-blue);
+    color: #0b2d4a;
+}
+.donate-btn.scrolled:hover {
+    background: #e5e7eb;
+}
+.logo-wrap:hover {
+    transform: translateY(-2px);
+}
+
+.nav-links a,
+.logo-text,
+.donate-btn {
+    transition: color .25s ease;
+}
+.donate-btn {
+    border:5px solid var(--mist-blue);
+    padding:10px 30px;
+    border-radius:12px;
+    font-weight:bold;
+    color:white;
+    text-decoration:none;
+}
+
+.donate-btn.scrolled {
+    color:black;
+}
+
+body {
+    padding-top:90px;
+}
+.logo-wrap {
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.nav-logo-img {
+    height:45px;
+}
+
+.logo-text h3 {
+    margin:0;
+    font-size:18px;
+}
+
+.logo-text p {
+    margin:0;
+    font-size:12px;
+    opacity:.8;
+}
+
+/* scrolling color changes */
+
+.logo-text {
+    color:white;
+}
+
+nav.scrolled {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+
+
 * {
     margin: 0;
     padding: 0;

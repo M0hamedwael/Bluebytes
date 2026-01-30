@@ -1,5 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+const nav = document.querySelector("nav");
+const logo = document.querySelector(".logo-wrap");
+const links = document.querySelectorAll(".nav-links a");
+const donate = document.querySelector(".donate-btn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+        donate.classList.add("scrolled");
+        links.forEach(l => l.classList.add("scrolled"));
+    } else {
+        nav.classList.remove("scrolled");
+        donate.classList.remove("scrolled");
+        links.forEach(l => l.classList.remove("scrolled"));
+    }
+});
+
     const EXCHANGE_RATE = 50; 
     let baseDonation = 50; // to use it everywhere
     let baseRaised = 780000;
