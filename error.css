@@ -1,0 +1,11 @@
+body { 
+    margin: 0; font-family: 'Evolventa', sans-serif; background-image: url('assets/gradient.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; color: #fff; overflow-x: hidden;
+}
+.container {
+    flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
+    }
+p { font-size: 15px; max-width: 500px; line-height: 1.4; opacity: 0.9; }
+        
+.back-home {
+    margin-top: 30px; color: white; font-weight: bold; text-decoration: none; border-bottom: 2px solid white; padding-bottom: 5px;
+}

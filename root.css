@@ -1,0 +1,14 @@
+@font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Regular.otf') format('opentype'); font-weight: normal; }
+        @font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Bold.otf') format('opentype'); font-weight: bold; }
+
+        :root { --p-blue: #0b3d91; --text: #333; }
+        body { margin: 0; font-family: 'Evolventa', sans-serif; background-image: url('assets/gradient.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; color: #fff; overflow-x: hidden; display: flex; flex-direction: column; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; position: relative; z-index: 10; background: white; }
+        .logo { font-size: 22px; color: var(--p-blue); font-weight: bold; text-decoration: none; }
+        .nav-links { display: flex; gap: 55px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { text-decoration: none; color: #0b2d4a; font-weight: bold; font-size: 20px; }
+        .donate-btn { text-decoration: none; color: var(--text); background: #f8fafc; border: 1px solid #e5e7eb; padding: 10px 30px;  border-radius: 12px;  font-weight: bold; }
+       
+        h1 { font-size: 50px; line-height: 1; margin-bottom: 20px; font-weight: bold; }
+        h1 span { color: #0b2d4a; }
+        
