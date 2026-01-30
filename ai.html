@@ -2,28 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueBytes | Section Under Development</title>
     <style>
-        @font-face { font-family: 'Evolventa'; src: url('Evolventa-Regular.otf') format('opentype'); }
-        @font-face { font-family: 'Evolventa'; src: url('Evolventa-Bold.otf') format('opentype'); font-weight: bold; }
-        body { margin: 0; font-family: 'Evolventa', sans-serif; background: #fff; }
-        nav { display: flex; justify-content: space-between; padding: 20px 50px; background: #f8f9fa; border-bottom: 1px solid #eee; }
-        .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { text-decoration: none; color: #0b3d91; font-weight: bold; }
-        .content { padding: 100px 50px; text-align: center; color: #0b3d91; }
+        @font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Regular.otf') format('opentype'); font-weight: normal; }
+        @font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Bold.otf') format('opentype'); font-weight: bold; }
+
+        :root { --p-blue: #0b3d91; --text: #333; }
+        
+        body { 
+            margin: 0; font-family: 'Evolventa', sans-serif; background-image: url('assets/gradient.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; color: #fff; overflow-x: hidden; display: flex; flex-direction: column;
+        }
+
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; position: relative; z-index: 10; background: white; 
+        }
+        
+        .logo { font-size: 22px; color: var(--p-blue); font-weight: bold; text-decoration: none; }
+        
+        .nav-links { display: flex; gap: 45px; list-style: none; margin: 0; padding: 0; }
+        
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: bold; font-size: 15px; }
+        
+        .donate-btn { 
+            text-decoration: none; color: var(--text); background: #f8fafc; border: 1px solid #e5e7eb; padding: 10px 30px;  border-radius: 12px;  font-weight: bold; 
+        }
+
+        .container {
+            flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
+        }
+
+        h1 { font-size: 50px; line-height: 1; margin-bottom: 20px; font-weight: bold; }
+        h1 span { color: #0b2d4a; }
+
+        p { font-size: 15px; max-width: 500px; line-height: 1.4; opacity: 0.9; }
+        
+        .back-home {
+            margin-top: 30px; color: white; font-weight: bold; text-decoration: none; border-bottom: 2px solid white; padding-bottom: 5px;
+        }
     </style>
 </head>
 <body>
+
     <nav>
-        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;"><strong>Blue bytes</strong></a></div>
+        <a href="index.html" class="logo">Blue bytes</a>
         <ul class="nav-links">
             <li><a href="ai.html">BlueByte AI</a></li>
             <li><a href="game.html">BlueByte Game</a></li>
+            <li><a href="content.html">Articles & Content</a></li>
             <li><a href="about.html">About us</a></li>
         </ul>
+        <a href="donate.html" class="donate-btn">DONATE</a>
     </nav>
-    <div class="content">
-        <h1>BlueByte Section</h1>
-        <p>This page is under development</p>
+
+    <div class="container">
+        <h1>Page Under<br><span>Development.</span></h1>
+        <p>Master water conservation in our digital simulation, then let our AI optimize your real-world usage.</p>
+        <a href="index.html" class="back-home">Return to Home</a>
     </div>
+
 </body>
 </html>
