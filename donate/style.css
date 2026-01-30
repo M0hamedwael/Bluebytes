@@ -321,3 +321,103 @@ body {
     70% { box-shadow: 0 0 0 15px rgba(27, 108, 168, 0); }
     100% { box-shadow: 0 0 0 0 rgba(27, 108, 168, 0); }
 }
+/* --- SECTION 2: IMPACT AREA --- */
+.impact-container {
+    max-width: 1000px; /* Matches your top section width */
+    margin: 80px auto; /* Space between top and bottom sections */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+/* Left Side: Text */
+.impact-text h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: #0d2b42; /* Dark Navy */
+    margin: 0;
+}
+
+.impact-text .highlight-blue {
+    color: #4BCBE0; /* The Light Blue color */
+    margin-bottom: 20px;
+}
+
+.impact-text p {
+    font-size: 1.1rem;
+    color: #556b7f;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+/* Right Side: Image Area */
+.impact-visual {
+    position: relative; /* Needed for the floating card */
+}
+
+.main-img {
+    width: 450px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 30px;
+    border: 8px solid #0d2b42; /* The dark border around image */
+}
+
+/* The Floating White Box */
+.stats-float {
+    position: absolute;
+    bottom: -30px; /* Hangs off the bottom */
+    left: -30px;   /* Hangs off the left */
+    background: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.drop-icon {
+    font-size: 2rem;
+    color: #0d2b42;
+}
+
+.stats-info strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #0d2b42;
+    line-height: 1;
+}
+
+.stats-info span {
+    font-size: 0.8rem;
+    color: #556b7f;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .impact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .impact-text p {
+        margin: 0 auto 40px auto;
+    }
+
+    .main-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .stats-float {
+        left: 50%;
+        transform: translateX(-50%); /* Center the card on mobile */
+        bottom: -20px;
+        width: 80%;
+        justify-content: center;
+    }
+}
