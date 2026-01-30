@@ -3,29 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueBytes | Section Under Development</title>
-    <link rel="stylesheet" href="../root.css">
-    <link rel="stylesheet" href="../error.css">
+    <title>Ignited - Safe Streams Initiative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <nav>
-        <a href="../index.html" class="logo">Blue bytes</a>
-        <ul class="nav-links">
-            <li><a href="../ai/ai.html">BlueByte AI</a></li>
-            <li><a href="../game/game.html">BlueByte Game</a></li>
-            <li><a href="../content/content.html">Articles & Content</a></li>
-            <li><a href="../about/about.html">About us</a></li>
-        </ul>
-        </ul>
-        <a href="../donate/donate.html" class="donate-btn">DONATE</a>
-    </nav>
-
-    <div class="container">
-        <h1>Page Under<br><span>Development.</span></h1>
-        <p>Master water conservation in our digital simulation, then let our AI optimize your real-world usage.</p>
-        <a href="index.html" class="back-home">Return to Home</a>
+<header class="header-stripe">
+    <div class="header-content">
+        <div class="logo">
+            <img src="logo.png" alt="Blue Bytes Logo">
+            <div class="logo-text">
+                <h3>Blue bytes</h3>
+                <p>Future in every drop.</p>
+            </div>
+        </div>
     </div>
+</header>
 
+    <div class="main-container">
+        
+
+
+        <div class="content-wrapper">
+            
+            <section class="left-panel">
+                <h1>Our Current Goal</h1>
+                <p class="description">
+                    We are currently funding the "Safe Streams" initiative to restore three major river ecosystems by the end of 2026. Your contribution directly funds purification technology and wildlife corridor restoration.
+                </p>
+
+                <div class="progress-card">
+                    <div class="progress-text">
+                        <h3>Fundraising Progress</h3>
+                        <h2 class="amount">
+                            <h2 class="amount">
+    <span id="raised-text">780k</span> out of <span id="goal-text">1M</span>
+</h2>
+                        <p class="supporters">7,800 Supporters</p>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="donut-chart">
+                            <div class="center-hole"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<aside class="right-panel">
+    <div class="donation-card">
+        <div class="card-header">
+            <h2>Make your impact</h2>
+            <select id="currency-select">
+                <option value="USD">USD</option>
+                <option value="EGP">EGP</option>
+            </select>
+        </div>
+        
+        <div class="toggle-container">
+            <button class="toggle-btn active" data-type="monthly">Monthly</button>
+            <button class="toggle-btn" data-type="onetime">One time</button>
+            <button class="toggle-btn" data-type="yearly">Yearly</button>
+        </div>
+
+        <div class="amount-grid">
+            <button class="amount-btn" data-amount="25">25<span class="currency-symbol">$</span></button>
+            <button class="amount-btn selected" data-amount="50">50<span class="currency-symbol">$</span></button>
+            <button class="amount-btn custom-btn" data-amount="custom">CUSTOM</button>
+        </div>
+
+        <div class="custom-amount-box hidden">
+            <span class="currency-prefix">$</span>
+            <input type="number" id="custom-input-field" placeholder="Enter amount">
+        </div>
+
+        <form id="donation-form">
+            <div class="input-group">
+                <div class="field">
+                    <label>Information</label>
+                    <input type="text" placeholder="Full name" required>
+                </div>
+                <div class="field">
+                    <label>&nbsp;</label>
+                    <input type="email" placeholder="Email" required>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <label>Payment Method</label>
+                <div class="payment-options">
+                    <div class="pay-option selected" id="pay-card">
+                        <span>Card</span> <i class="far fa-credit-card"></i>
+                    </div>
+                    <div class="pay-option" id="pay-paypal">
+                        <i class="fab fa-paypal" style="color:#00457C;"></i> <span>PayPal</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="donate-submit-btn">Donate Now</button>
+        </form>
+    </div>
+</aside>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script src="script.js"></script>
+</body>
+    <script src="script.js"></script>
 </body>
 </html>

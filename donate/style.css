@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease; 
+}
+
+body {
+    background-color: #E8F4FA;
+    color: #1a2b3c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+.header-stripe {
+    background: white;
+    width: 100vw;
+    padding: 15px 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover img {
+    transform: rotate(-10deg) scale(1.1); 
+}
+
+
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    padding-bottom: 50px;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+
+.left-panel h1 {
+    font-size: 3.5rem;
+    color: #0f2d40;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.description {
+    line-height: 1.8;
+    color: #4a5b6c;
+    margin-bottom: 40px;
+    font-size: 1.15rem;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.card-header h2 {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+}
+#currency-select {
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #f0f7fb;
+    font-weight: bold;
+    color: #1a2b3c;
+    cursor: pointer;
+}
+
+.progress-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateY(0);
+}
+
+.progress-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.progress-text .amount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1B6CA8; 
+    margin: 10px 0;
+}
+
+
+.chart-container {
+    position: relative;
+}
+
+.donut-chart {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#4BCBE0 0% 0%, #eee 0% 100%); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 1.5s ease-out; 
+}
+
+.center-hole {
+    width: 110px;
+    height: 110px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #4BCBE0;
+    font-size: 1.5rem;
+}
+
+.donation-card {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.toggle-container {
+    background: #f0f7fb;
+    padding: 5px; 
+    border-radius: 50px; 
+    display: flex;
+    justify-content: space-between;
+    gap: 0; 
+    margin-bottom: 25px;
+    border: 1px solid #e1eef5; 
+}
+
+.toggle-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 0;
+    border-radius: 50px; /* match  */
+    font-weight: 600;
+    color: #556b7f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+.toggle-btn:hover {
+    color: #1B6CA8;
+    background: rgba(255,255,255,0.5);
+}
+.toggle-btn.active {
+    background: white; /* edit ts toanything  */
+    color: #1B6CA8;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+}
+.custom-amount-box {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    background: #FAFAFA;
+    border: 2px solid #1B6CA8;
+    border-radius: 12px;
+    padding: 0 15px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 50px;
+    opacity: 1;
+}
+.custom-amount-box.hidden {
+    height: 0;
+    padding: 0;
+    border: none;
+    opacity: 0;
+    margin-bottom: 0;
+}
+.currency-prefix {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1B6CA8;
+    margin-right: 10px;
+}
+#custom-input-field {
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1a2b3c;
+    width: 100%;
+    outline: none;
+}
+.amount-grid {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; 
+    margin-bottom: 25px;
+}
+
+.amount-btn {
+    flex: 1;
+    border: 2px solid #eee;
+    background: white;
+    padding: 20px 0;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: #333;
+}
+
+.amount-btn:hover {
+    border-color: #4BCBE0;
+    transform: scale(1.05); 
+    background: #faffff;
+}
+
+.amount-btn.selected {
+    border-color: #1B6CA8;
+    background: #f0f9ff;
+    color: #1B6CA8;
+    box-shadow: 0 0 0 4px rgba(27, 108, 168, 0.1); 
+}
+
+
+.field input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    background: #FAFAFA;
+    outline: none;
+}
+
+.field input:focus {
+    border-color: #4BCBE0;
+    background: white;
+    box-shadow: 0 0 15px rgba(75, 203, 224, 0.15);
+}
+
+
+.pay-option {
+    border: 2px solid #eee;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.6;
+}
+
+.pay-option:hover {
+    opacity: 1;
+}
+
+.pay-option.selected {
+    border-color: #1B6CA8;
+    opacity: 1;
+    background: #f0f9ff;
+}
+
+
+.donate-submit-btn {
+    width: 100%;
+    margin-top: 30px;
+    padding: 18px;
+    background: linear-gradient(135deg, #1B6CA8 0%, #145585 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(27, 108, 168, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+.donate-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(27, 108, 168, 0.4);
+}
+
+.donate-submit-btn:active {
+    transform: scale(0.98);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(27, 108, 168, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(27, 108, 168, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(27, 108, 168, 0); }
+}
