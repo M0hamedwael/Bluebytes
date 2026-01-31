@@ -8,16 +8,7 @@
         @font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Regular.otf') format('opentype'); font-weight: normal; }
         @font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Bold.otf') format('opentype'); font-weight: bold; }
 
-        :root { --p-blue: #0b3d91; --text: #333; }
-        body { margin: 0; font-family: 'Evolventa', sans-serif; background-image: url('assets/gradient.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; color: #fff; overflow-x: hidden; }
-
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; position: relative; z-index: 10; background: white; }
-        .logo { font-size: 22px; color: var(--p-blue); font-weight: bold; text-decoration: none; }
-        .nav-links { display: flex; gap: 55px; list-style: none; margin: 0; padding: 0; }
-        .nav-links a { text-decoration: none; color: #0b2d4a; font-weight: bold; font-size: 20px; }
-        .donate-btn { text-decoration: none; color: var(--text); background: #f8fafc; border: 5px solid #e5e7eb; padding: 10px 30px; border-radius: 12px; font-weight: bold; }
-
-        
+        .hero-wrap{display: flex; align-items: center;justify-content: center; height: 100vh;}
         .hero { display: grid; grid-template-columns: 1.2fr 1fr; padding: 80px 8%; position: relative; z-index: 5; align-items: center; }
         h1 { font-size: 80px; line-height: 1; margin-bottom: 20px; font-weight: bold; }
         h1 span { color: #0b2d4a; }
@@ -31,20 +22,30 @@
         .card-btn { background: #e3e5e9; border: none; padding: 15px 40px; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: 'Evolventa'; font-size: 16px; color: #0b2d4a; width: fit-content; margin-top: auto; }
         .card-offset { margin-top: 0px; }
     </style>
+    <link rel="stylesheet" href="root.css">
 </head>
 <body>
     <div class="grid-overlay"></div>
-    <nav>
-        <a href="index.html" class="logo">Blue bytes</a>
-        <ul class="nav-links">
-            <li><a href="ai/ai.html">BlueByte AI</a></li>
-            <li><a href="game/game.html">BlueByte Game</a></li>
-            <li><a href="content/content.html">Articles & Content</a></li>
-            <li><a href="about/about.html">About us</a></li>
-            
-        </ul>
-        <a href="donate/donate.html" class="donate-btn">DONATE</a>
-    </nav>
+    <nav id="navbar">
+    <a href="../index.html" class="logo logo-wrap">
+        <img src="../assets/logo.png" alt="logo" class="nav-logo-img">
+
+        <div class="logo-text">
+            <h3>Blue bytes</h3>
+            <p>Future in every drop.</p>
+        </div>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../ai/ai.html">BlueByte AI</a></li>
+        <li><a href="../game/game.html">BlueByte Game</a></li>
+        <li><a href="../content/content.html">Articles & Content</a></li>
+        <li><a href="../about/about.html">About us</a></li>
+    </ul>
+
+    <a href="donate.html" class="donate-btn">DONATE</a>
+</nav>
+    <div class="hero-wrap">
     <section class="hero">
     <div class="hero-text">
         <h1>What we waste today,<br><span>They will miss tomorrow.</span></h1>
@@ -67,6 +68,8 @@
         </div>
     </div>
     </section>
+    </div>
+    <script src="root.js"></script>
 </body>
 </html>
 

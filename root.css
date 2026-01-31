@@ -1,17 +1,20 @@
 @font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Regular.otf') format('opentype'); font-weight: normal; }
 @font-face { font-family: 'Evolventa'; src: url('font/Evolventa-Bold.otf') format('opentype'); font-weight: bold; }
 
-:root { --p-blue: #0b3d91; --text: #333; --mist-blue:#E6F2FA; --s-blue:#1F6FB2; --acc-cyan:#4CC9F0; --c-gray:#B8C7D6 }
+:root { --p-blue: #0b3d91; --text: #333; --mist-blue:#E6F2FA; --s-blue:#1F6FB2; --acc-cyan:#4CC9F0; --c-gray:#B8C7D6; --b-text: #0b2d4a}
 body { margin: 0; font-family: 'Evolventa', sans-serif; background-image: url('assets/gradient.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; color: #fff; overflow-x: hidden; display: flex; flex-direction: column; }
 nav { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        padding: 15px 3% 0 3%; 
-        position: fixed; 
-        z-index: 10; 
-        background: rgba(255, 255, 255, 0);
-        width: 94%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:100;
+    background:rgba(255,255,255,0);
+    transition:.25s ease;
         transition: all 0.2s ease;
  }
  nav.scrolled{
@@ -19,9 +22,58 @@ nav {
  }
 .logo { font-size: 22px; color: white; font-weight: bold; text-decoration: none; }
 .logo.scrolled{color: var(--p-blue) ;}
+.logo img {
+    height: 50px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover img {
+    transform: rotate(-10deg) scale(1.1); 
+}
+.logo-text {
+    color:white;
+}
+.logo-wrap {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    transition: all 0.3s ease;
+}
+
+.nav-logo-img {
+    height:45px;
+}
+
+.logo-text h3 {
+    margin:0;
+    font-size:18px;
+}
+
+.logo-text p {
+    margin:0;
+    font-size:12px;
+    opacity:.8;
+}
+.logo-wrap:hover {
+    transform: translateY(-2px);
+}
+nav.scrolled .logo-text h3,
+nav.scrolled .logo-text p {
+    color: #0b2d4a;
+}
+nav.scrolled .logo-text p {
+    opacity: 0.7;
+}
 .nav-links { display: flex; gap: 55px; list-style: none; margin: 0; padding: 0; }
 
-.nav-links a { text-decoration: none; color: white; font-weight: bold; font-size: 20px;transition: all 0.5s ease;display: inline-block;}
+.nav-links a { 
+        text-decoration: none;
+         color: white; 
+         font-weight: bold; 
+         font-size: 20px;
+         transition: all 0.5s ease;
+         display: inline-block;
+        }
 .nav-links a.scrolled{color:#0b2d4a ;}
 .nav-links a:hover{
         transform: translateY(-3px);
@@ -30,17 +82,21 @@ nav {
         text-decoration: none;
          color: var(--text); 
          background: #f8fafc00; 
-         border: 5px solid var(--mist-blue); 
+         border: 4px solid var(--mist-blue); 
          padding: 10px 30px; 
          border-radius: 12px; 
          font-weight: bold;
          margin-bottom: 10px;
+         margin-right: 35px;
          transition: all 0.15s linear;
          color: white;
         }
-.donate-btn.scrolled{color:black}
+.donate-btn.scrolled{
+        color:black;
+        border-color: var(--b-text);
+}
 .donate-btn.scrolled:hover{
-        background-color: #e5e7eb;
+        background-color: var(--b-text);
         color: white;
 }
 .donate-btn:hover{
@@ -48,5 +104,4 @@ nav {
         color: var(--text);
 }
 h1 { font-size: 50px; line-height: 1; margin-bottom: 20px; font-weight: bold; }
-h1 span { color: #0b2d4a; }
-        
+h1 span { color: #0b2d4a; }       

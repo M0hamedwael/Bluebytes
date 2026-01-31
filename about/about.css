@@ -1,4 +1,4 @@
-:root { --p-blue: #0b3d91; --text: #333; --mist-blue:#E6F2FA; --s-blue:#1F6FB2; --acc-cyan:#4CC9F0; --c-gray:#B8C7D6 }
+:root { --p-blue: #0b3d91; --text: #333; --mist-blue:#E6F2FA; --s-blue:#1F6FB2; --acc-cyan:#4CC9F0; --c-gray:#B8C7D6; --b-text: #0b2d4a}
 body{
     background-image: none;
 }
@@ -6,9 +6,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 95vh;
+    height: 99vh;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 .bg-img-container{
     width: 98%;
@@ -21,6 +22,7 @@ body{
 }
 .bg-img-container img{
 width: 100%;
+border-radius: 20px;
 }
 .purpose{
     width: 100%;
@@ -36,11 +38,11 @@ width: 100%;
 .purpose-header{
     position: absolute;
     font-size: 1.3em;
-    top: 20%;
+    top: 30%;
 }
 .purpose-txt{
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 3em;
 }
 .problem-section{
     background-image: linear-gradient(white , var(--mist-blue) 30%);
