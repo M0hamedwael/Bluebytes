@@ -391,6 +391,9 @@ body {
     letter-spacing: 1px;
     font-weight: 600;
 }
+footer{
+    width: 100%;
+}
 
 @media (max-width: 768px) {
     .impact-container {

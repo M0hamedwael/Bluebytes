@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Bytes</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --p-blue: #0b3d91;
+      --s-blue: #1F6FB2;
+      --acc-cyan: #4CC9F0;
+      --text: #0b2d4a;
+    }
+
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f6fa;
+      font-family: 'Poppins', sans-serif;
+      padding-top: 100px; }
+
+    /* ===== NAVBAR (Fixed) ===== */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      background: #fff;
+      z-index: 9999;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      animation: slideDown .6s ease forwards;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo-img {
+      width: 140px; 
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 34px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+      padding: 4px 0;
+      transition: color .3s ease;
+    }
+
+    
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: var(--acc-cyan);
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--p-blue);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    
+    .donate-btn {
+      text-decoration: none;
+      padding: 10px 26px;
+      border-radius: 20px;
+      border: 2px solid var(--acc-cyan);
+      color: var(--p-blue);
+      font-weight: 600;
+      transition: all .3s ease;
+    }
+
+    .donate-btn:hover {
+      background: var(--acc-cyan);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(76,201,240,.3);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      margin-top: 120px;
+      padding: 70px 40px 30px;
+      background: radial-gradient(circle at top left, #2a3dbb, #1aa7b8);
+      color: #fff;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    footer h3 {
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 12px;
+    }
+
+    footer ul li a {
+      color: #eaf6ff;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    footer ul li a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .footer-icons {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .footer-icons a {
+      color: white;
+      font-size: 24px;
+      margin: 0 15px;
+      text-decoration: none;
+      transition: transform 0.3s;
+      display: inline-block;
+    }
+
+    .footer-icons a:hover {
+      transform: translateY(-5px);
+      color: var(--acc-cyan);
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+      font-size: 13px;
+      color: #eaf6ff;
+      line-height: 1.8;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+   
+    @media (max-width: 900px) {
+      #navbar { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-logo-img { width: 110px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <a href="#" class="logo-wrap">
+      <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#">BlueByte AI</a></li>
+      <li><a href="#">BlueByte Game</a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Articles & Content</a></li>
+    </ul>
+
+    <a href="#" class="donate-btn">DONATE</a>
+  </nav>
+
+  <div style="text-align: center; padding: 50px; color: #666;">
+     <h2>Welcome to BlueBytes</h2>
+     <p>Scroll down to see the footer</p>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+
+      <div>
+        <h3>BlueByte</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Our mission</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Games and learning</h3>
+        <ul>
+          <li><a href="#">First game</a></li>
+          <li><a href="#">Second game</a></li>
+          <li><a href="#">Third game</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Articles & content</h3>
+        <ul>
+          <li><a href="#">Water waste articles</a></li>
+          <li><a href="#">Tips to save water</a></li>
+          <li><a href="#">Research & facts</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Donation</h3>
+        <ul>
+          <li><a href="#">Donate now</a></li>
+          <li><a href="#">Where donations go</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Help & policies</h3>
+        <ul>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms & conditions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Organization</h3>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Our team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Reports & transparency</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-icons">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-envelope"></i></a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        This website is an educational initiative aimed at raising awareness among children
+        about water conservation through games, articles, and community support.
+      </p>
+      <p>
+        © 2026 Water Awareness Initiative. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
