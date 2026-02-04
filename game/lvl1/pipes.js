@@ -1,4 +1,4 @@
-window.onload = function loadgame(){
+
 
 
 const canvas = document.getElementById("canvas");
@@ -41,10 +41,10 @@ const pipe = {
     img: pipeImg,
     leaks: [
         { x: 335, y: 120, dir: Math.PI/4, amp: 4.5, pipeWidth: 38, pipeOrientation: 0, fixed: false, indicatorOffsetX: 15, indicatorOffsetY: -10, plasterOffsetX: 22, plasterOffsetY: -19 },
-        { x: 335, y: 340, dir: Math.PI/2, amp: 3, pipeWidth: 42, pipeOrientation: 0, fixed: false, indicatorOffsetX: 12, indicatorOffsetY: -20, plasterOffsetX: 18, plasterOffsetY: -19 },
+        { x: 335, y: 340, dir: Math.PI/2, amp: 3, pipeWidth: 37, pipeOrientation: 0, fixed: false, indicatorOffsetX: 12, indicatorOffsetY: -20, plasterOffsetX: 18, plasterOffsetY: -19 },
         { x: 490, y: 409, dir: Math.PI/2 + 0.5, amp: 1.3, pipeWidth: 18, pipeOrientation: 1.6, fixed: false, indicatorOffsetX: -20, indicatorOffsetY: 5, plasterOffsetX: 8, plasterOffsetY: 10 },
-        { x: 87, y: 484, dir: Math.PI, amp: 3, pipeWidth: 18, pipeOrientation: 1.6, fixed: false, indicatorOffsetX: 30, indicatorOffsetY: 0, plasterOffsetX: 8, plasterOffsetY: 10 },
-        { x: 310, y: 540, dir: 3*Math.PI/2, amp: 3, pipeWidth: 18, pipeOrientation: 0, fixed: false, indicatorOffsetX: 0, indicatorOffsetY: 30, plasterOffsetX: -10, plasterOffsetY: 7 }
+        { x: 87, y: 484, dir: Math.PI, amp: 3, pipeWidth: 18, pipeOrientation: 1.6, fixed: false, indicatorOffsetX: 30, indicatorOffsetY: 0, plasterOffsetX: 7, plasterOffsetY: 9 },
+        { x: 310, y: 540, dir: 3*Math.PI/2, amp: 3, pipeWidth: 18, pipeOrientation: 0, fixed: false, indicatorOffsetX: 0, indicatorOffsetY: 30, plasterOffsetX: -10, plasterOffsetY: 6 }
     ]
 };
 
@@ -206,7 +206,7 @@ canvas.addEventListener("mousemove", e => {
 
     canvas.style.cursor = isHoveringIndicator(mouseX, mouseY)
         ? "pointer"
-        : "crosshair";
+        : "default";
 });
 
 function updateDebugDisplay() {
@@ -293,4 +293,4 @@ function restartGame() {
    START
 ========================= */
 pipeImg.onload = animate;
-restartButton.addEventListener("click", restartGame);}
+restartButton.addEventListener("click", restartGame);

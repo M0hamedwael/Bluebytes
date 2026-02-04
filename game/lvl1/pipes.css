@@ -6,7 +6,7 @@
 .donate-btn{border-color:var(--s-blue);}
 .donate-btn:hover{background-color: var(--s-blue);color: var(--mist-blue);}
 body {
-    padding-top:90px;
+    padding-top:500px;
 }body {
     margin: 0;
     background: white;
@@ -15,7 +15,7 @@ body {
     align-items: center;
     height: 100vh;
 }
-canvas { cursor: crosshair; }
+canvas { cursor:default; }
 #debugDisplay {
     position: fixed;
     top: 10px;
@@ -52,4 +52,7 @@ canvas { cursor: crosshair; }
     padding: 10px 20px;
     font-size: 20px;
     cursor: pointer;
+}
+footer{
+    width: 100%;
 }
