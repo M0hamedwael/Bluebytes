@@ -337,3 +337,18 @@ body {
     flex: 1;
     padding-bottom: 40px;
 }
+
+#navbar .nav-links a, 
+#navbar .logo-text h3,
+#navbar .logo-text p {
+    color: #0b2d4a !important;
+}
+
+#navbar .donate-btn {
+    background-color: #1F6FB2 !important;
+    color: white !important;
+}
+
+.game-wrapper {
+    margin-top: 100px;
+    min-height: calc(100vh - 100px); }
