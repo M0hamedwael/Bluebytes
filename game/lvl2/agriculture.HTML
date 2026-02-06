@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueBytes | Pipe game</title>
+<link rel="stylesheet" href="agriculture.css">    </head>
+<body>
+
+    <div class="game-wrapper">
+        <aside class="game-hud">
+            <div class="hud-header">
+                <h2>Pipe game</h2>
+                <div class="status-badge">
+                    <span class="pulse-dot"></span> <span id="status-text">Ready</span>
+                </div>
+                <p id="level-title" style="color:#7f8c8d; font-weight:bold; margin-top:5px; font-size:14px;">Loading...</p>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-item">
+                    <span class="label">Pipes Used</span>
+                    <strong id="score-used">0</strong>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Efficiency</span>
+                    <div class="progress-track">
+                        <div id="efficiency-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button onclick="init(currentLevelIdx)" class="btn secondary">Reset</button>
+                <button id="submit-btn" class="btn primary">Start Flow</button>
+            </div>
+        </aside>
+
+        <main class="grid-container">
+            <div id="game-board"></div>
+        </main>
+    </div>
+
+    <div id="modal-overlay" class="hidden">
+        <div class="modal-card">
+            </div>
+    </div>
+
+<script src="agriculture.js"></script></body>
+</html>
