@@ -11,13 +11,9 @@
 }
 
 body {
-    background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Nunito', sans-serif;
     margin: 0;
-    overflow: hidden;
-    background-image: radial-gradient(#36384e 1px, transparent 1px);
-    background-size: 20px 20px;
 }
 
 .game-wrapper {
