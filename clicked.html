@@ -1,776 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueBytes – The Reality of Water</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlueBytes – The Reality of Water</title>
 
-    <style>
-        :root {
-            --p-blue: #0b3d91;
-            --s-blue: #1F6FB2;
-            --acc-cyan: #4CC9F0;
-            --text: #0b2d4a;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        /* ===== RESET & GENERAL ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<style>
+:root {
+    --p-blue: #0b3d91;
+    --s-blue: #1F6FB2;
+    --acc-cyan: #4CC9F0;
+    --text: #0b2d4a;
+}
 
-        body {
-            background: #f4f6fa;
-            color: #222;
-            padding-top: 110px; 
-            line-height: 1.6;
-        }
+/* ===== RESET & GENERAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-        /* ===== NAVBAR (Fixed) ===== */
-        #navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 60px;
-            background: #fff;
-            z-index: 9999;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            animation: slideDown .6s ease forwards;
-        }
+body {
+    background: #f4f6fa;
+    color: #222;
+    padding-top: 110px; 
+    line-height: 1.6;
+}
 
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
+/* ===== NAVBAR ===== */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    background: #fff;
+    z-index: 9999;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
 
-        .nav-logo-img {
-            width: 140px; 
-            height: auto;
-            display: block;
-        }
+.logo-wrap { display: flex; align-items: center; text-decoration: none; }
+.nav-logo-img { width: 140px; height: auto; display: block; }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 34px;
-        }
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 34px;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 15px;
-            font-weight: 500;
-            position: relative;
-            padding: 4px 0;
-            transition: color .3s ease;
-        }
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    padding: 4px 0;
+    transition: color .3s ease;
+}
 
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0%;
-            height: 2px;
-            background: var(--acc-cyan);
-            transition: width .3s ease;
-        }
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: var(--acc-cyan);
+    transition: width .3s ease;
+}
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--p-blue);
-        }
+.nav-links a:hover, .nav-links a.active { color: var(--p-blue); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
+.donate-btn {
+    text-decoration: none;
+    padding: 10px 26px;
+    border-radius: 20px;
+    border: 2px solid var(--acc-cyan);
+    color: var(--p-blue);
+    font-weight: 600;
+    transition: all .3s ease;
+}
 
-        .donate-btn {
-            text-decoration: none;
-            padding: 10px 26px;
-            border-radius: 20px;
-            border: 2px solid var(--acc-cyan);
-            color: var(--p-blue);
-            font-weight: 600;
-            transition: all .3s ease;
-        }
+.donate-btn:hover {
+    background: var(--acc-cyan);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(76,201,240,.3);
+}
 
-        .donate-btn:hover {
-            background: var(--acc-cyan);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(76,201,240,.3);
-        }
+/* ===== ARTICLE ===== */
+.article-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
 
-        /* ===== ARTICLE LAYOUT ===== */
-        .article-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+.video-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 35px;
+}
 
-        .video-box {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #000;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 35px;
-        }
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.content-section {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
 
-        .content-section {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
+h2 {
+    font-size: 2.2rem;
+    color: var(--p-blue);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
 
-        h2 {
-            font-size: 2.2rem;
-            color: var(--p-blue);
-            margin-bottom: 25px;
-            line-height: 1.2;
-        }
+p { font-size: 1.1rem; margin-bottom: 20px; color: #444; text-align: justify; }
 
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #444;
-            text-align: justify;
-        }
+.fact-card {
+    background: #f0faff;
+    border-left: 5px solid var(--acc-cyan);
+    padding: 25px;
+    margin: 35px 0;
+    border-radius: 0 12px 12px 0;
+    font-size: 1.05rem;
+}
 
-        .fact-card {
-            background: #f0faff;
-            border-left: 5px solid var(--acc-cyan);
-            padding: 25px;
-            margin: 35px 0;
-            border-radius: 0 12px 12px 0;
-            font-size: 1.05rem;
-        }
-
-        /* ===== FOOTER (Detailed) ===== */
-        footer {
-            margin-top: 100px;
-            padding: 70px 40px 30px;
-            background: radial-gradient(circle at top left, #2a3dbb, #1aa7b8);
-            color: #fff;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        footer h3 {
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        footer ul { list-style: none; }
-        footer ul li { margin-bottom: 12px; }
-        footer ul li a {
-            color: #eaf6ff;
-            text-decoration: none;
-            font-size: 14px;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-        footer ul li a:hover { opacity: 1; text-decoration: underline; }
-
-        .footer-icons {
-            margin-top: 50px;
-            text-align: center;
-        }
-        .footer-icons a {
-            color: white;
-            font-size: 24px;
-            margin: 0 15px;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        .footer-icons a:hover { transform: translateY(-5px); color: var(--acc-cyan); }
-
-        .footer-bottom {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            text-align: center;
-            font-size: 13px;
-            color: #eaf6ff;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 40px auto 0;
-        }
-
-        /* ===== ANIMATIONS & RESPONSIVE ===== */
-        @keyframes slideDown{
-            from{ transform:translateY(-100%); opacity:0; }
-            to{ transform:translateY(0); opacity:1; }
-        }
-
-        @media (max-width: 900px) {
-            #navbar { padding: 0 20px; height: 80px; }
-            .nav-logo-img { width: 110px; }
-            .nav-links { display: none; }
-            .article-container { margin-top: 20px; }
-            .content-section { padding: 25px; }
-            h2 { font-size: 1.7rem; }
-        }
-    </style>
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    #navbar { padding: 0 20px; height: 80px; }
+    .nav-logo-img { width: 110px; }
+    .nav-links { display: none; }
+    .article-container { margin-top: 20px; }
+    .content-section { padding: 25px; }
+    h2 { font-size: 1.7rem; }
+}
+</style>
 </head>
 <body>
 
-    <nav id="navbar">
-        <a href="#" class="logo-wrap">
-            <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="#">BlueByte AI</a></li>
-            <li><a href="#">BlueByte Game</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#" class="active">Articles & Content</a></li>
-        </ul>
-
-        <a href="#" class="donate-btn">DONATE</a>
-    </nav>
-
-    <div class="article-container">
-        
-    
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueBytes – The Reality of Water</title>
-
-       <style>
-        :root {
-            --p-blue: #0b3d91;
-            --s-blue: #1F6FB2;
-            --acc-cyan: #4CC9F0;
-            --text: #0b2d4a;
-        }
-
-        /* ===== RESET & GENERAL ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: #f4f6fa;
-            color: #222;
-            padding-top: 110px; 
-            line-height: 1.6;
-        }
-
-        /* ===== NAVBAR (Fixed) ===== */
-        #navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 60px;
-            background: #fff;
-            z-index: 9999;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            animation: slideDown .6s ease forwards;
-        }
-
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .nav-logo-img {
-            width: 140px; 
-            height: auto;
-            display: block;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 34px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 15px;
-            font-weight: 500;
-            position: relative;
-            padding: 4px 0;
-            transition: color .3s ease;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0%;
-            height: 2px;
-            background: var(--acc-cyan);
-            transition: width .3s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--p-blue);
-        }
-
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .donate-btn {
-            text-decoration: none;
-            padding: 10px 26px;
-            border-radius: 20px;
-            border: 2px solid var(--acc-cyan);
-            color: var(--p-blue);
-            font-weight: 600;
-            transition: all .3s ease;
-        }
-
-        .donate-btn:hover {
-            background: var(--acc-cyan);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(76,201,240,.3);
-        }
-
-        /* ===== ARTICLE LAYOUT ===== */
-        .article-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .video-box {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #000;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 35px;
-        }
-
-        .video-box video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .content-section {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            color: var(--p-blue);
-            margin-bottom: 25px;
-            line-height: 1.2;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #444;
-            text-align: justify;
-        }
-
-        .fact-card {
-            background: #f0faff;
-            border-left: 5px solid var(--acc-cyan);
-            padding: 25px;
-            margin: 35px 0;
-            border-radius: 0 12px 12px 0;
-            font-size: 1.05rem;
-        }
-
-        /* ===== ANIMATIONS & RESPONSIVE ===== */
-        @keyframes slideDown{
-            from{ transform:translateY(-100%); opacity:0; }
-            to{ transform:translateY(0); opacity:1; }
-        }
-
-        @media (max-width: 900px) {
-            #navbar { padding: 0 20px; height: 80px; }
-            .nav-logo-img { width: 110px; }
-            .nav-links { display: none; }
-            .article-container { margin-top: 20px; }
-            .content-section { padding: 25px; }
-            h2 { font-size: 1.7rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav id="navbar">
-        <a href="#" class="logo-wrap">
-            <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="#">BlueByte AI</a></li>
-            <li><a href="#">BlueByte Game</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#" class="active">Articles & Content</a></li>
-        </ul>
-
-        <a href="#" class="donate-btn">DONATE</a>
-    </nav>
-
-    <div class="article-container">
-
-        <!-- VIDEO SECTION -->
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueBytes – The Reality of Water</title>
-
-    <style>
-        :root {
-            --p-blue: #0b3d91;
-            --s-blue: #1F6FB2;
-            --acc-cyan: #4CC9F0;
-            --text: #0b2d4a;
-        }
-
-        /* ===== RESET & GENERAL ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: #f4f6fa;
-            color: #222;
-            padding-top: 110px; 
-            line-height: 1.6;
-        }
-
-        /* ===== NAVBAR (Fixed) ===== */
-        #navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 60px;
-            background: #fff;
-            z-index: 9999;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            animation: slideDown .6s ease forwards;
-        }
-
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .nav-logo-img {
-            width: 140px; 
-            height: auto;
-            display: block;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 34px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 15px;
-            font-weight: 500;
-            position: relative;
-            padding: 4px 0;
-            transition: color .3s ease;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0%;
-            height: 2px;
-            background: var(--acc-cyan);
-            transition: width .3s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--p-blue);
-        }
-
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .donate-btn {
-            text-decoration: none;
-            padding: 10px 26px;
-            border-radius: 20px;
-            border: 2px solid var(--acc-cyan);
-            color: var(--p-blue);
-            font-weight: 600;
-            transition: all .3s ease;
-        }
-
-        .donate-btn:hover {
-            background: var(--acc-cyan);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(76,201,240,.3);
-        }
-
-        /* ===== ARTICLE LAYOUT ===== */
-        .article-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .video-box {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #000;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 35px;
-        }
-
-        .video-box video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .content-section {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            color: var(--p-blue);
-            margin-bottom: 25px;
-            line-height: 1.2;
-        }
-
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #444;
-            text-align: justify;
-        }
-
-        .fact-card {
-            background: #f0faff;
-            border-left: 5px solid var(--acc-cyan);
-            padding: 25px;
-            margin: 35px 0;
-            border-radius: 0 12px 12px 0;
-            font-size: 1.05rem;
-        }
-
-        /* ===== ANIMATIONS & RESPONSIVE ===== */
-        @keyframes slideDown{
-            from{ transform:translateY(-100%); opacity:0; }
-            to{ transform:translateY(0); opacity:1; }
-        }
-
-        @media (max-width: 900px) {
-            #navbar { padding: 0 20px; height: 80px; }
-            .nav-logo-img { width: 110px; }
-            .nav-links { display: none; }
-            .article-container { margin-top: 20px; }
-            .content-section { padding: 25px; }
-            h2 { font-size: 1.7rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav id="navbar">
-        <a href="#" class="logo-wrap">
-            <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="#">BlueByte AI</a></li>
-            <li><a href="#">BlueByte Game</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#" class="active">Articles & Content</a></li>
-        </ul>
-
-        <a href="#" class="donate-btn">DONATE</a>
-    </nav>
-
-    <div class="article-container">
-
-        <!-- VIDEO SECTION -->
-        <div class="video-box">
-            <video controls poster="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1000">
-                <source src="https://www.youtube.com/watch?v=E6pjj2gVnWA" 
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-        <article class="content-section">
-            <h2>The Reality of Earth's Water Resources</h2>
-
-            <p>When we look at Earth from space, it appears as a blue planet covered with water. This makes many people think that water is unlimited. However, the truth is very different. Only a very small percentage of Earth’s water is actually safe and available for humans to drink and use.</p>
-
-            <div class="fact-card">
-                <strong>Did you know?</strong> About 97% of the water on Earth is salty water found in oceans and seas. This water cannot be used for drinking or farming without expensive treatment processes.
-            </div>
-
-            <p>The remaining 3% is fresh water, but even this small amount is not fully accessible. Most fresh water is trapped in glaciers, ice caps, or deep underground. Only less than 1% of Earth’s total water is available as drinkable water in rivers, lakes, and shallow groundwater.</p>
-
-            <p>This is the water we depend on for drinking, cooking, agriculture, and industry. What makes the situation more serious is that fresh water takes many years to renew, while humans consume it very quickly.</p>
-
-            <p>Pollution, climate change, and population growth are making the problem worse. Factories, plastic waste, and chemicals pollute rivers and lakes. Climate change causes droughts in some areas and reduces rainfall, which means less fresh water for millions of people.</p>
-
-            <p>Because of this, protecting water is not a choice—it is a necessity. Simple actions like turning off taps, fixing leaks, reducing pollution, and using water wisely can make a big difference. Governments and individuals must work together to protect every drop of fresh water.</p>
-
-            <p>Another important issue related to water scarcity is unequal distribution. Some countries have many rivers and large amounts of rainfall, while others suffer from extreme water shortages. In dry regions, people may walk long distances every day just to collect a small amount of water for their families. This inequality makes water a global problem, not just a local one.</p>
-
-            <p>Agriculture is the largest consumer of fresh water in the world. A huge amount of water is used to grow crops and raise animals. In many places, traditional farming methods waste water because of poor irrigation systems. Using modern techniques such as drip irrigation and smart farming can help reduce water waste and protect water resources.</p>
-
-            <p>Technology can also play an important role in solving water scarcity problems. Modern technology allows scientists to develop advanced water treatment systems that recycle wastewater and turn it into clean, usable water. Desalination plants can convert seawater into fresh water, providing new sources of water for countries that suffer from shortages.</p>
-
-            <p>In addition, rainwater harvesting systems help collect and store rainwater for future use, especially in dry areas. Smart water management systems use sensors and data analysis to reduce water loss and improve efficiency. These technological solutions can greatly reduce pressure on natural water resources if they are used correctly.</p>
-
-            <p>Water scarcity does not only affect humans, but also plants and animals. When rivers dry up and lakes shrink, natural habitats are destroyed, and many species are at risk of extinction. Protecting water resources helps maintain ecosystems and supports life on Earth.</p>
-
-            <p>Education and awareness are also essential in protecting water. When people understand how limited fresh water is, they become more careful in their daily usage. Schools, media, and community programs can spread awareness and encourage responsible water consumption from a young age.</p>
-
-            <p><em>In conclusion, although water covers most of our planet, drinkable water is extremely limited. If we want a safe and healthy future for the next generations, we must respect water and use it responsibly.</em></p>
-        </article>
+<nav id="navbar">
+    <a href="#" class="logo-wrap">
+        <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
+    </a>
+    <ul class="nav-links">
+        <li><a href="#">BlueByte AI</a></li>
+        <li><a href="#">BlueByte Game</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#" class="active">Articles & Content</a></li>
+    </ul>
+    <a href="#" class="donate-btn">DONATE</a>
+</nav>
+
+<div class="article-container">
+
+    <!-- VIDEO -->
+    <div class="video-box">
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+
+    <article class="content-section">
+        <h2>The Reality of Earth's Water Resources</h2>
+
+        <p>When we look at Earth from space, it appears as a blue planet covered with water. This makes many people think that water is unlimited. However, the truth is very different. Only a very small percentage of Earth’s water is actually safe and available for humans to drink and use.</p>
+
+        <div class="fact-card">
+            <strong>Did you know?</strong> About 97% of the water on Earth is salty water found in oceans and seas. This water cannot be used for drinking or farming without expensive treatment processes.
+        </div>
+
+        <p>The remaining 3% is fresh water, but even this small amount is not fully accessible. Most fresh water is trapped in glaciers, ice caps, or deep underground. Only less than 1% of Earth’s total water is available as drinkable water in rivers, lakes, and shallow groundwater.</p>
+
+        <p>This is the water we depend on for drinking, cooking, agriculture, and industry. What makes the situation more serious is that fresh water takes many years to renew, while humans consume it very quickly.</p>
+
+        <p>Pollution, climate change, and population growth are making the problem worse. Factories, plastic waste, and chemicals pollute rivers and lakes. Climate change causes droughts in some areas and reduces rainfall, which means less fresh water for millions of people.</p>
+
+        <p>Because of this, protecting water is not a choice—it is a necessity. Simple actions like turning off taps, fixing leaks, reducing pollution, and using water wisely can make a big difference. Governments and individuals must work together to protect every drop of fresh water.</p>
+
+        <p>Another important issue related to water scarcity is unequal distribution. Some countries have many rivers and large amounts of rainfall, while others suffer from extreme water shortages. In dry regions, people may walk long distances every day just to collect a small amount of water for their families. This inequality makes water a global problem, not just a local one.</p>
+
+        <p>Agriculture is the largest consumer of fresh water in the world. A huge amount of water is used to grow crops and raise animals. In many places, traditional farming methods waste water because of poor irrigation systems. Using modern techniques such as drip irrigation and smart farming can help reduce water waste and protect water resources.</p>
+
+        <p>Technology can also play an important role in solving water scarcity problems. Modern technology allows scientists to develop advanced water treatment systems that recycle wastewater and turn it into clean, usable water. Desalination plants can convert seawater into fresh water, providing new sources of water for countries that suffer from shortages.</p>
+
+        <p>In addition, rainwater harvesting systems help collect and store rainwater for future use, especially in dry areas. Smart water management systems use sensors and data analysis to reduce water loss and improve efficiency. These technological solutions can greatly reduce pressure on natural water resources if they are used correctly.</p>
+
+        <p>Water scarcity does not only affect humans, but also plants and animals. When rivers dry up and lakes shrink, natural habitats are destroyed, and many species are at risk of extinction. Protecting water resources helps maintain ecosystems and supports life on Earth.</p>
+
+        <p>Education and awareness are also essential in protecting water. When people understand how limited fresh water is, they become more careful in their daily usage. Schools, media, and community programs can spread awareness and encourage responsible water consumption from a young age.</p>
+
+        <p><em>In conclusion, although water covers most of our planet, drinkable water is extremely limited. If we want a safe and healthy future for the next generations, we must respect water and use it responsibly.</em></p>
+    </article>
+</div>
+
+<!-- FOOTER (unchanged) -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h3>BlueByte</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Our mission</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Games and learning</h3>
+            <ul>
+                <li><a href="#">First game</a></li>
+                <li><a href="#">Second game</a></li>
+                <li><a href="#">Third game</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Articles & content</h3>
+            <ul>
+                <li><a href="#">Water waste articles</a></li>
+                <li><a href="#">Tips to save water</a></li>
+                <li><a href="#">Research & facts</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Donation</h3>
+            <ul>
+                <li><a href="#">Donate now</a></li>
+                <li><a href="#">Where donations go</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Help & policies</h3>
+            <ul>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Privacy policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Organization</h3>
+            <ul>
+                <li><a href="#">Our team</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-envelope"></i></a>
+    </div>
+
+    <div class="footer-bottom">
+        <p>This website is an educational initiative aimed at raising awareness among children about water conservation through games, articles, and community support.</p>
+        <p>© 2026 Water Awareness Initiative. All rights reserved.</p>
+    </div>
+</footer>
+
 </body>
 </html>
 
-
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h3>BlueByte</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Our mission</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Games and learning</h3>
-                <ul>
-                    <li><a href="#">First game</a></li>
-                    <li><a href="#">Second game</a></li>
-                    <li><a href="#">Third game</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Articles & content</h3>
-                <ul>
-                    <li><a href="#">Water waste articles</a></li>
-                    <li><a href="#">Tips to save water</a></li>
-                    <li><a href="#">Research & facts</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Donation</h3>
-                <ul>
-                    <li><a href="#">Donate now</a></li>
-                    <li><a href="#">Where donations go</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Help & policies</h3>
-                <ul>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Organization</h3>
-                <ul>
-                    <li><a href="#">Our team</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-envelope"></i></a>
-        </div>
-
-        <div class="footer-bottom">
-            <p>This website is an educational initiative aimed at raising awareness among children about water conservation through games, articles, and community support.</p>
-            <p>© 2026 Water Awareness Initiative. All rights reserved.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
