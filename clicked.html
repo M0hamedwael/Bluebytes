@@ -464,6 +464,209 @@
     <div class="article-container">
 
         <!-- VIDEO SECTION -->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueBytes – The Reality of Water</title>
+
+    <style>
+        :root {
+            --p-blue: #0b3d91;
+            --s-blue: #1F6FB2;
+            --acc-cyan: #4CC9F0;
+            --text: #0b2d4a;
+        }
+
+        /* ===== RESET & GENERAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f4f6fa;
+            color: #222;
+            padding-top: 110px; 
+            line-height: 1.6;
+        }
+
+        /* ===== NAVBAR (Fixed) ===== */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            background: #fff;
+            z-index: 9999;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            animation: slideDown .6s ease forwards;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            width: 140px; 
+            height: auto;
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 34px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            padding: 4px 0;
+            transition: color .3s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--acc-cyan);
+            transition: width .3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--p-blue);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .donate-btn {
+            text-decoration: none;
+            padding: 10px 26px;
+            border-radius: 20px;
+            border: 2px solid var(--acc-cyan);
+            color: var(--p-blue);
+            font-weight: 600;
+            transition: all .3s ease;
+        }
+
+        .donate-btn:hover {
+            background: var(--acc-cyan);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76,201,240,.3);
+        }
+
+        /* ===== ARTICLE LAYOUT ===== */
+        .article-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .video-box {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 35px;
+        }
+
+        .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--p-blue);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #444;
+            text-align: justify;
+        }
+
+        .fact-card {
+            background: #f0faff;
+            border-left: 5px solid var(--acc-cyan);
+            padding: 25px;
+            margin: 35px 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 1.05rem;
+        }
+
+        /* ===== ANIMATIONS & RESPONSIVE ===== */
+        @keyframes slideDown{
+            from{ transform:translateY(-100%); opacity:0; }
+            to{ transform:translateY(0); opacity:1; }
+        }
+
+        @media (max-width: 900px) {
+            #navbar { padding: 0 20px; height: 80px; }
+            .nav-logo-img { width: 110px; }
+            .nav-links { display: none; }
+            .article-container { margin-top: 20px; }
+            .content-section { padding: 25px; }
+            h2 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo-wrap">
+            <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#">BlueByte AI</a></li>
+            <li><a href="#">BlueByte Game</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#" class="active">Articles & Content</a></li>
+        </ul>
+
+        <a href="#" class="donate-btn">DONATE</a>
+    </nav>
+
+    <div class="article-container">
+
+        <!-- VIDEO SECTION -->
         <div class="video-box">
             <video controls poster="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1000">
                 <source src="https://cdn.pixabay.com/vimeo/362404598/water-shortage-720p.mp4" type="video/mp4">
@@ -471,17 +674,10 @@
             </video>
         </div>
 
-</body>
-</html>
-
-
-
         <article class="content-section">
             <h2>The Reality of Earth's Water Resources</h2>
-            
-            <p>When we look at Earth from space, it appears as a blue planet covered with water. This makes many people think that water is unlimited. However, the truth is very different. Only a very small percentage of Earth’s water is actually safe and available for humans to drink and use.</p>
 
-            
+            <p>When we look at Earth from space, it appears as a blue planet covered with water. This makes many people think that water is unlimited. However, the truth is very different. Only a very small percentage of Earth’s water is actually safe and available for humans to drink and use.</p>
 
             <div class="fact-card">
                 <strong>Did you know?</strong> About 97% of the water on Earth is salty water found in oceans and seas. This water cannot be used for drinking or farming without expensive treatment processes.
@@ -494,7 +690,7 @@
             <p>Pollution, climate change, and population growth are making the problem worse. Factories, plastic waste, and chemicals pollute rivers and lakes. Climate change causes droughts in some areas and reduces rainfall, which means less fresh water for millions of people.</p>
 
             <p>Because of this, protecting water is not a choice—it is a necessity. Simple actions like turning off taps, fixing leaks, reducing pollution, and using water wisely can make a big difference. Governments and individuals must work together to protect every drop of fresh water.</p>
-            
+
             <p>Another important issue related to water scarcity is unequal distribution. Some countries have many rivers and large amounts of rainfall, while others suffer from extreme water shortages. In dry regions, people may walk long distances every day just to collect a small amount of water for their families. This inequality makes water a global problem, not just a local one.</p>
 
             <p>Agriculture is the largest consumer of fresh water in the world. A huge amount of water is used to grow crops and raise animals. In many places, traditional farming methods waste water because of poor irrigation systems. Using modern techniques such as drip irrigation and smart farming can help reduce water waste and protect water resources.</p>
@@ -510,6 +706,9 @@
             <p><em>In conclusion, although water covers most of our planet, drinkable water is extremely limited. If we want a safe and healthy future for the next generations, we must respect water and use it responsibly.</em></p>
         </article>
     </div>
+</body>
+</html>
+
 
     <footer>
         <div class="footer-grid">
