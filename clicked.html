@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BlueBytes – The Reality of Water</title>
+<title>BlueBytes – Water Awareness</title>
 
+<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -23,7 +24,6 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
 body {
     background: #f4f6fa;
     color: #222;
@@ -45,17 +45,11 @@ body {
     background: #fff;
     z-index: 9999;
     box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    animation: slideDown .6s ease forwards;
 }
-
 .logo-wrap { display: flex; align-items: center; text-decoration: none; }
 .nav-logo-img { width: 140px; height: auto; display: block; }
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 34px;
-}
-
+.nav-links { list-style: none; display: flex; gap: 34px; }
 .nav-links a {
     text-decoration: none;
     color: var(--text);
@@ -65,7 +59,6 @@ body {
     padding: 4px 0;
     transition: color .3s ease;
 }
-
 .nav-links a::after {
     content: "";
     position: absolute;
@@ -76,7 +69,6 @@ body {
     background: var(--acc-cyan);
     transition: width .3s ease;
 }
-
 .nav-links a:hover, .nav-links a.active { color: var(--p-blue); }
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
@@ -89,7 +81,6 @@ body {
     font-weight: 600;
     transition: all .3s ease;
 }
-
 .donate-btn:hover {
     background: var(--acc-cyan);
     color: white;
@@ -97,52 +88,43 @@ body {
     box-shadow: 0 10px 20px rgba(76,201,240,.3);
 }
 
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
 /* ===== ARTICLE ===== */
 .article-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-
-.video-box {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 35px;
-}
-
-.video-box video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.content-section {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-}
-
-h2 {
-    font-size: 2.2rem;
-    color: var(--p-blue);
-    margin-bottom: 25px;
-    line-height: 1.2;
-}
-
+.video-box { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 35px; }
+.video-box video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.content-section { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+h2 { font-size: 2.2rem; color: var(--p-blue); margin-bottom: 25px; line-height: 1.2; }
 p { font-size: 1.1rem; margin-bottom: 20px; color: #444; text-align: justify; }
+.fact-card { background: #f0faff; border-left: 5px solid var(--acc-cyan); padding: 25px; margin: 35px 0; border-radius: 0 12px 12px 0; font-size: 1.05rem; }
 
-.fact-card {
-    background: #f0faff;
-    border-left: 5px solid var(--acc-cyan);
-    padding: 25px;
-    margin: 35px 0;
-    border-radius: 0 12px 12px 0;
-    font-size: 1.05rem;
+/* ===== FOOTER ===== */
+footer {
+    margin-top: 120px;
+    padding: 70px 40px 30px;
+    background: radial-gradient(circle at top left, #2a3dbb, #1aa7b8);
+    color: #fff;
 }
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+footer h3 { margin-bottom: 20px; font-size: 18px; font-weight: 600; color: #fff; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 12px; }
+footer ul li a { color: #eaf6ff; text-decoration: none; font-size: 14px; opacity: 0.8; transition: opacity 0.3s; }
+footer ul li a:hover { opacity: 1; text-decoration: underline; }
+.footer-icons { margin-top: 50px; text-align: center; }
+.footer-icons a { color: white; font-size: 24px; margin: 0 15px; text-decoration: none; transition: transform 0.3s; display: inline-block; }
+.footer-icons a:hover { transform: translateY(-5px); color: var(--acc-cyan); }
+.footer-bottom { margin-top: 40px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 13px; color: #eaf6ff; line-height: 1.8; max-width: 800px; margin-left: auto; margin-right: auto; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
@@ -155,8 +137,10 @@ p { font-size: 1.1rem; margin-bottom: 20px; color: #444; text-align: justify; }
 }
 </style>
 </head>
+
 <body>
 
+<!-- NAVBAR -->
 <nav id="navbar">
     <a href="#" class="logo-wrap">
         <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
@@ -170,9 +154,8 @@ p { font-size: 1.1rem; margin-bottom: 20px; color: #444; text-align: justify; }
     <a href="#" class="donate-btn">DONATE</a>
 </nav>
 
+<!-- ARTICLE & VIDEO -->
 <div class="article-container">
-
-    <!-- VIDEO -->
     <div class="video-box">
         <video controls>
             <source src="videoplayback (1).mp4" type="video/mp4">
@@ -213,7 +196,7 @@ p { font-size: 1.1rem; margin-bottom: 20px; color: #444; text-align: justify; }
     </article>
 </div>
 
-<!-- FOOTER (unchanged) -->
+<!-- FOOTER -->
 <footer>
     <div class="footer-grid">
         <div>
@@ -238,6 +221,7 @@ p { font-size: 1.1rem; margin-bottom: 20px; color: #444; text-align: justify; }
                 <li><a href="#">Water waste articles</a></li>
                 <li><a href="#">Tips to save water</a></li>
                 <li><a href="#">Research & facts</a></li>
+                <li><a href="#">Resources</a></li>
             </ul>
         </div>
         <div>
