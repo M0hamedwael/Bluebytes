@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlueBytes – Save Water</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    font-family: 'Segoe UI', sans-serif;
+    user-select: none;
+}
+
+#game {
+    position: relative;
+    width: 800px;
+    height: 450px;
+    background: url('bg_bathroom.jpg') no-repeat center bottom / cover;
+    border: 8px solid #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,.5);
+}
+
+/* HUD */
+.hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 240px;
+    background: rgba(255,255,255,.85);
+    padding: 12px;
+    border-radius: 16px;
+}
+
+.label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.track {
+    height: 16px;
+    background: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    transition: width .2s;
+}
+
+#clean { background: #4caf50; }
+#water { background: #2196f3; }
+#rinse {
+    background: #ff9800;
+    height: 6px;
+}
+
+/* Tap */
+#tap {
+    position: absolute;
+    top: 40%;
+    left: 52%;
+    width: 60px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Water */
+#stream {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    width: 24px;
+    height: 0;
+    background: url('water_stream.png') repeat-y center top / contain;
+    transform: translateX(-50%);
+    transition: height .2s;
+}
+
+/* Sink */
+#sink {
+    position: absolute;
+    bottom: 42%;
+    left: 50%;
+    width: 120px;
+    height: 0;
+    background: rgba(33,150,243,.5);
+    transform: translateX(-50%);
+    border-radius: 0 0 60px 60px;
+    transition: height .2s;
+}
+
+/* Girl */
+#girl {
+    position: absolute;
+    left: 140px;
+    bottom: 0;
+    width: 380px;
+    height: 380px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+    transform: scaleX(-1);
+}
+
+.brush {
+    animation: wiggle .4s infinite alternate;
+}
+
+@keyframes wiggle {
+    from { transform: scaleX(-1) rotate(0deg); }
+    to { transform: scaleX(-1) rotate(4deg); }
+}
+
+/* Message */
+#msg {
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    background: #fff;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    display: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+/* End */
+#overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.7);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    z-index: 100;
+}
+
+#overlay button {
+    margin-top: 20px;
+    padding: 14px 36px;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+    <div class="hud">
+        <div class="label"><span>Clean Teeth</span><span id="cTxt">0%</span></div>
+        <div class="track"><div id="clean" class="bar"></div></div>
+
+        <div class="label"><span>Water Used</span><span id="wTxt">0%</span></div>
+        <div class="track"><div id="water" class="bar"></div></div>
+
+        <div class="label" style="font-size:11px;">Mouth Needs Rinsing</div>
+        <div class="track"><div id="rinse"></div></div>
+    </div>
+
+    <img id="tap" src="btn_stop.png" alt="Tap Button">
+    <div id="stream"></div>
+    <div id="sink"></div>
+    <div id="girl"></div>
+    <div id="msg">Turn on water to rinse</div>
+
+    <div id="overlay">
+        <h1 id="endText"></h1>
+        <p id="learn"></p>
+        <button onclick="location.reload()">Play Again</button>
+    </div>
+
+</div>
+
+<script>
+/* SPRITES */
+const SPRITE = {
+    IDLE: "url('girl_idle.png')",
+    BRUSH: "url('girl_brush.png')",
+    WIN: "url('girl_win.png')",
+    LOSE: "url('girl_lose.png')"
+};
+
+/* RATES */
+const RATE = {
+    CLEAN: 0.3,
+    WATER: 0.35,
+    DRY: 0.5
+};
+
+let state = {
+    clean: 0,
+    water: 0,
+    dry: 0,
+    tap: true,
+    active: true
+};
+
+const girl = document.getElementById('girl');
+const tap = document.getElementById('tap');
+const stream = document.getElementById('stream');
+const sink = document.getElementById('sink');
+const msg = document.getElementById('msg');
+const cleanBar = document.getElementById('clean');
+const waterBar = document.getElementById('water');
+const rinseBar = document.getElementById('rinse');
+const cTxt = document.getElementById('cTxt');
+const wTxt = document.getElementById('wTxt');
+const overlay = document.getElementById('overlay');
+const endText = document.getElementById('endText');
+const learn = document.getElementById('learn');
+
+/* INIT */
+girl.style.backgroundImage = SPRITE.IDLE;
+
+/* TAP */
+tap.onclick = () => {
+    if (!state.active) return;
+    state.tap = !state.tap;
+    tap.src = state.tap ? 'btn_stop.png' : 'btn_flow.png';
+};
+
+/* LOOP */
+const loop = setInterval(() => {
+    if (!state.active) return;
+
+    if (state.tap) {
+        state.water += RATE.WATER;
+        state.dry = Math.max(0, state.dry - 2);
+
+        stream.style.height = '50px';
+        girl.style.backgroundImage = SPRITE.IDLE;
+        girl.classList.remove('brush');
+        msg.style.display = 'none';
+    } else {
+        stream.style.height = '0';
+
+        if (state.dry < 100) {
+            state.clean += RATE.CLEAN;
+            state.dry += RATE.DRY;
+
+            girl.style.backgroundImage = SPRITE.BRUSH;
+            girl.classList.add('brush');
+        } else {
+            girl.style.backgroundImage = SPRITE.IDLE;
+            girl.classList.remove('brush');
+            msg.style.display = 'block';
+        }
+    }
+
+    state.clean = Math.min(100, state.clean);
+    state.water = Math.min(100, state.water);
+    state.dry = Math.min(100, state.dry);
+
+    cleanBar.style.width = state.clean + '%';
+    waterBar.style.width = state.water + '%';
+    rinseBar.style.width = state.dry + '%';
+
+    cTxt.textContent = Math.floor(state.clean) + '%';
+    wTxt.textContent = Math.floor(state.water) + '%';
+    sink.style.height = (state.water / 100) * 45 + 'px';
+
+    if (state.clean >= 100) end(true);
+    if (state.water >= 100) end(false);
+
+}, 50);
+
+/* END */
+function end(win) {
+    state.active = false;
+    clearInterval(loop);
+
+    tap.remove();          // 🔴 BUTTON REMOVED
+    stream.style.height = '0';
+    msg.style.display = 'none';
+
+    girl.classList.remove('brush');
+    girl.style.backgroundImage = win ? SPRITE.WIN : SPRITE.LOSE;
+
+    overlay.style.display = 'flex';
+    endText.textContent = win ? 'Great Job!' : 'Too Much Water';
+    learn.textContent = win
+        ? 'Turning off the tap saves water.'
+        : 'Turn off the tap while brushing to save water.';
+}
+</script>
+
+</body>
+</html>
