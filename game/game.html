@@ -3,40 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueBytes | Section Under Development</title>
+    <title>BlueBytes – Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../root.css">
-    <link rel="stylesheet" href="../error.css">
+    <style>
+        :root { --p-blue: #0b3d91; --text: #333; --mist-blue:#E6F2FA; --s-blue:#1F6FB2; --acc-cyan:#4CC9F0; --c-gray:#B8C7D6 ;--b-text: #0b2d4a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { display: inline; }
+        .logo, .logo-text, .nav-links a, .donate-btn { color: var(--s-blue); }
+        .donate-btn { border-color: var(--s-blue); }
+        .donate-btn:hover { background-color: var(--s-blue); color: var(--mist-blue); }
+        .container { padding: 0 60px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1200px; margin: 120px auto 100px auto; }
+        .card { height: 260px; position: relative; background-size: cover; background-position: center; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.55); }
+        .content { position: absolute; inset: 0; z-index: 2; padding: 25px; color: #fff; display: flex; flex-direction: column; justify-content: center; }
+        .content h3 { font-size: 22px; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
+        .content p { font-size: 14px; line-height: 1.6; max-width: 95%; }
+        .content .tag { font-size: 13px; opacity: 0.9; margin-bottom: 8px; display: block; color: var(--acc-cyan); font-weight: bold; }
+        .content a { margin-top: 15px; color: var(--acc-cyan); text-decoration: none; font-weight: 700; letter-spacing: 1px; cursor: pointer; }
+        @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @media (max-width: 900px) { .container { grid-template-columns: 1fr; padding: 0 20px; } #navbar { padding: 0 20px; height: 80px; } .nav-logo-img { width: 100px; } .nav-links { display: none; } }
+    </style>
 </head>
 <body>
 
     <nav id="navbar">
-    <a href="../index.html" class="logo logo-wrap">
-        <img src="../assets/logo.png" alt="logo" class="nav-logo-img">
+        <a href="../index.html" class="logo logo-wrap">
+            <img src="../assets/logo.png" alt="logo" class="nav-logo-img">
+            <div class="logo-text">
+                <h3>Blue bytes</h3>
+                <p>Future in every drop.</p>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../ai/ai.html">BlueByte AI</a></li>
+            <li><a href="../game/game.html">BlueByte Game</a></li>
+            <li><a href="../content/content.html">Articles & Content</a></li>
+            <li><a href="../about/about.html">About us</a></li>
+        </ul>
+        <a href="../donate/donate.html" class="donate-btn">DONATE</a>
+    </nav>
 
-        <div class="logo-text">
-            <h3>Blue bytes</h3>
-            <p>Future in every drop.</p>
+    <section class="container">
+        <div class="card" style="background-image:url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+            <div class="content">
+                <span class="tag">🎮 Simulation Game</span>
+                <h3>The Water Saver</h3>
+                <p>Fix leaking pipes and manage a city's water supply in this fast-paced puzzle game.</p>
+                <a href="lvl1/Pipes.html">PLAY NOW</a>
+            </div>
         </div>
-    </a>
 
-    <ul class="nav-links">
-        <li><a href="../ai/ai.html">BlueByte AI</a></li>
-        <li><a href="../game/game.html">BlueByte Game</a></li>
-        <li><a href="../content/content.html">Articles & Content</a></li>
-        <li><a href="../about/about.html">About us</a></li>
-    </ul>
+        <div class="card" style="background-image:url('../assets/BlueBytes-game.png');">
+            <div class="content">
+                <span class="tag">🎮 Simulation Game</span>
+                <h3>Teeth Brushing</h3>
+                <p>Learn how to save water while brushing your teeth in this interactive challenge.</p>
+                <a href="lvl3/game.html">PLAY NOW</a>
+            </div>
+        </div>
+        <div class="card" style="background-image:url('../assets/BlueBytes-game.png');">
+            <div class="content">
+                <span class="tag">🎮 Simulation Game</span>
+                <h3>Agriculture Game</h3>
+                <p>Learn how to save water while watering plants.</p>
+                <a href="lvl2/game.html">PLAY NOW</a>
+            </div>
+        </div>
+    </section>
 
-    <a href="../donate/donate.html" class="donate-btn">DONATE</a>
-</nav>
-
-    <div class="container">
-        <h1>Page Under<br><span>Development.</span></h1>
-        <p>Master water conservation in our digital simulation, then let our AI optimize your real-world usage.</p>
-        <a href="index.html" class="back-home">Return to Home</a>
-    </div>
-<footer>
+   <footer>
     <div class="footer-grid">
-
       <div>
         <h3>BlueByte</h3>
         <ul>
@@ -45,7 +83,6 @@
           <li><a href="../about/about.html">Our mission</a></li>
         </ul>
       </div>
-
       <div>
         <h3>Games and learning</h3>
         <ul>
@@ -54,7 +91,6 @@
           <li><a href="#">Third game</a></li>
         </ul>
       </div>
-
       <div>
         <h3>Articles & content</h3>
         <ul>
@@ -64,7 +100,6 @@
           <li><a href="../content/content.html">Resources</a></li>
         </ul>
       </div>
-
       <div>
         <h3>Donation</h3>
         <ul>
@@ -72,7 +107,6 @@
           <li><a href="../donate/donate.html">Where donations go</a></li>
         </ul>
       </div>
-
       <div>
         <h3>Help & policies</h3>
         <ul>
@@ -82,7 +116,6 @@
           <li><a href="#">Terms & conditions</a></li>
         </ul>
       </div>
-
       <div>
         <h3>Organization</h3>
         <ul>
@@ -92,24 +125,16 @@
           <li><a href="#">Reports & transparency</a></li>
         </ul>
       </div>
-
     </div>
-
     <div class="footer-icons">
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-facebook"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fa fa-envelope"></i></a>
     </div>
-
     <div class="footer-bottom">
-      <p>
-        This website is an educational initiative aimed at raising awareness among children
-        about water conservation through games, articles, and community support.
-      </p>
-      <p>
-        © 2026 Water Awareness Initiative. All rights reserved.
-      </p>
+      <p>This website is an educational initiative aimed at raising awareness among children about water conservation through games, articles, and community support.</p>
+      <p>© 2026 Water Awareness Initiative. All rights reserved.</p>
     </div>
   </footer>
   <script src="../root.js"></script>
