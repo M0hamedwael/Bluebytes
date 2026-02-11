@@ -429,6 +429,11 @@ document.getElementById('submit-btn').onclick = async () => {
         }
     }, 600);
 };
-
+const music =
+    dpcument.getElementById(bg-music);
+document.addElementListener("click", () => {
+    ,usic.volume =0.3;
+                           music.play();
+}, { once" true});
 // Start game
 init(0);
