@@ -1,7 +1,12 @@
 const PATH = '../../assets/';
 const SOILS = ['soil1', 'soil2', 'soil3']; 
 const CROPS = ['crop1.png', 'crop2.png', 'crop3.png', 'crop4.png', 'crop5.png'];
-
+const music =
+    dpcument.getElementById(bg-music);
+document.addElementListener("click", () => {
+    ,usic.volume =0.3;
+                           music.play();
+}, { once" true});
 // --- LEVEL CONFIGURATION (Difficulty Scaling) ---
 const LEVELS = [
     { name: "Level 1: Garden Starter", rows: 6, cols: 8, plants: 3, rocks: 0 },
@@ -429,11 +434,6 @@ document.getElementById('submit-btn').onclick = async () => {
         }
     }, 600);
 };
-const music =
-    dpcument.getElementById(bg-music);
-document.addElementListener("click", () => {
-    ,usic.volume =0.3;
-                           music.play();
-}, { once" true});
+
 // Start game
 init(0);
