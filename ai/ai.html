@@ -3,115 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueBytes | Section Under Development</title>
+    <title>BlueBytes | BlueByte AI</title>
     <link rel="stylesheet" href="../root.css">
-    <link rel="stylesheet" href="../error.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #EFF6FF; --surface-color: #FFFFFF; --accent-color: #22D3EE; --text-main: #0B2545; --text-secondary: #64748B; --border-color: #E2E8F0; --s-blue: #1F6FB2; --b-text: #0b2d4a; --acc-cyan: #4CC9F0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+        #navbar { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 25px 60px; background: #FFFFFF; box-shadow: 0 4px 15px rgba(0,0,0,0.05); z-index: 100; position: relative; }
+        .logo-wrap { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+        .logo, .logo-text, .nav-links a, .donate-btn { color: var(--s-blue); }
+        .nav-logo-img { width: 40px; height: auto; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--b-text); transition: 0.3s; }
+        .nav-links a:hover { color: var(--acc-cyan); }
+        .donate-btn { padding: 10px 25px; border: 2px solid var(--s-blue); border-radius: 25px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .donate-btn:hover { background-color: var(--s-blue); color: #fff; }
+        .chat-wrapper { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; width: 100%; }
+        .chat-container { width: 100%; max-width: 900px; height: 650px; background: var(--surface-color); border-radius: 24px; display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(11, 37, 69, 0.05); border: 1px solid var(--border-color); overflow: hidden; }
+        .chat-header { padding: 25px; background: var(--surface-color); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px; }
+        .chat-header h2 { margin: 0; font-size: 1.5rem; color: var(--text-main); font-weight: 800; letter-spacing: -0.5px; }
+        .chat-header .badge { background: #E0F2FE; color: #0284C7; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+        .messages-area { flex: 1; padding: 30px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; background-color: #F8FAFC; }
+        .message { max-width: 80%; padding: 16px 22px; border-radius: 18px; font-size: 1.05rem; line-height: 1.6; word-wrap: break-word; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .ai-message { background: var(--surface-color); color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--border-color); }
+        .user-message { background: var(--text-main); color: #FFFFFF; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .input-area { padding: 25px; background: var(--surface-color); display: flex; gap: 15px; border-top: 1px solid var(--border-color); }
+        .input-area input { flex: 1; background: #F1F5F9; border: 2px solid transparent; border-radius: 12px; padding: 16px; color: var(--text-main); outline: none; font-size: 1rem; transition: 0.2s; }
+        .input-area input:focus { background: #FFFFFF; border-color: var(--text-main); }
+        .input-area input::placeholder { color: #94A3B8; }
+        .send-btn { background: var(--text-main); color: #FFFFFF; border: none; padding: 0 35px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: transform 0.2s; font-size: 0.9rem; }
+        .send-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(11, 37, 69, 0.2); }
+        .messages-area::-webkit-scrollbar { width: 8px; }
+        .messages-area::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        @media (max-width: 900px) { #navbar { padding: 15px 20px; flex-direction: row; } .nav-links { display: none; } .chat-container { height: 80vh; } }
+    </style>
 </head>
 <body>
 
     <nav id="navbar">
-    <a href="../index.html" class="logo logo-wrap">
-        <img src="../assets/logo.png" alt="logo" class="nav-logo-img">
+        <a href="../index.html" class="logo logo-wrap">
+            <img src="../assets/logo.png" alt="logo" class="nav-logo-img">
+            <div class="logo-text">
+                <h3>Blue bytes</h3>
+                <p>Future in every drop.</p>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../ai/ai.html">BlueByte AI</a></li>
+            <li><a href="../game/game.html">BlueByte Game</a></li>
+            <li><a href="../content/content.html">Articles & Content</a></li>
+            <li><a href="../about/about.html">About us</a></li>
+        </ul>
+        <a href="../donate/donate.html" class="donate-btn">DONATE</a>
+    </nav>
 
-        <div class="logo-text">
-            <h3>Blue bytes</h3>
-            <p>Future in every drop.</p>
+    <main class="chat-wrapper">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>BlueByte AI</h2>
+                <span class="badge">Online</span>
+            </div>
+            <div class="messages-area" id="chatBox">
+                <div class="message ai-message">
+                    Welcome to BlueBytes! I'm your personal water conservation agent. My goal is to help you save water (and money). To start, may I ask a few questions about your daily water habits?
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="Type your answer here...">
+                <button class="send-btn" onclick="sendMessage()">Send</button>
+            </div>
         </div>
-    </a>
+    </main>
 
-    <ul class="nav-links">
-        <li><a href="../ai/ai.html">BlueByte AI</a></li>
-        <li><a href="../game/game.html">BlueByte Game</a></li>
-        <li><a href="../content/content.html">Articles & Content</a></li>
-        <li><a href="../about/about.html">About us</a></li>
-    </ul>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>BlueByte</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about/about.html">About</a></li>
+                    <li><a href="../about/about.html">Our mission</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Games and learning</h3>
+                <ul>
+                    <li><a href="#">First game</a></li>
+                    <li><a href="#">Second game</a></li>
+                    <li><a href="#">Third game</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Articles & content</h3>
+                <ul>
+                    <li><a href="../content/content.html">Water waste articles</a></li>
+                    <li><a href="../content/content.html">Tips to save water</a></li>
+                    <li><a href="../content/content.html">Research & facts</a></li>
+                    <li><a href="../content/content.html">Resources</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Donation</h3>
+                <ul>
+                    <li><a href="../donate/donate.html">Donate now</a></li>
+                    <li><a href="../donate/donate.html">Where donations go</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Help & policies</h3>
+                <ul>
+                    <li><a href="#">Help center</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Terms & conditions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Organization</h3>
+                <ul>
+                    <li><a href="../about/about.html">About us</a></li>
+                    <li><a href="#">Our team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Reports & transparency</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-envelope"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>This website is an educational initiative aimed at raising awareness among children about water conservation through games, articles, and community support.</p>
+            <p>© 2026 Water Awareness Initiative. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <a href="../donate/donate.html" class="donate-btn">DONATE</a>
-</nav>
+    <script>
 
-    <div class="container">
-        <h1>Page Under<br><span>Development.</span></h1>
-        <p>Master water conservation in our digital simulation, then let our AI optimize your real-world usage.</p>
-        <a href="../index.html" class="back-home">Return to Home</a>
-    </div>
-    <script src="../root.js"></script>
-<footer>
-    <div class="footer-grid">
+        const GEMINI_API_KEY = "AIzaSyB6vSfb72eXqCqdsHCJqaukG-hs_DdatyU"; 
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`;
+        
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
 
-      <div>
-        <h3>BlueByte</h3>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../about/about.html">About</a></li>
-          <li><a href="../about/about.html">Our mission</a></li>
-        </ul>
-      </div>
 
-      <div>
-        <h3>Games and learning</h3>
-        <ul>
-          <li><a href="#">First game</a></li>
-          <li><a href="#">Second game</a></li>
-          <li><a href="#">Third game</a></li>
-        </ul>
-      </div>
+        const systemPrompt = `
+ROLE & PERSONA:
+You are the "BlueBytes Conservation Agent," an AI specialized in water sustainability and engineering. Your goal is to help users strictly lower their water footprint. You are friendly, professional, and data-driven.
 
-      <div>
-        <h3>Articles & content</h3>
-        <ul>
-          <li><a href="../content/content.html">Water waste articles</a></li>
-          <li><a href="../content/content.html">Tips to save water</a></li>
-          <li><a href="../content/content.html">Research & facts</a></li>
-          <li><a href="../content/content.html">Resources</a></li>
-        </ul>
-      </div>
+YOUR KNOWLEDGE BASE:
+1. THE BRAND: BlueBytes is a tech-forward water initiative.
+2. CURRENT GOAL: We are raising funds for the "Safe Streams" initiative (Restoring 3 major rivers by 2026).
+3. FUNDING STATUS: We have raised $780k out of $1M (78% complete).
+4. OUR INNOVATION: We developed a "Copper Press Faucet" for public spaces that requires holding the tap to eject water, physically preventing waste.
 
-      <div>
-        <h3>Donation</h3>
-        <ul>
-          <li><a href="../donate/donate.html">Donate now</a></li>
-          <li><a href="../donate/donate.html">Where donations go</a></li>
-        </ul>
-      </div>
+CONVERSATION FLOW (FOLLOW STRICTLY):
+1. **The Introduction**: ALWAYS start the conversation by introducing yourself and stating your mission. Example: "Welcome to BlueBytes! I'm your personal water conservation agent. My goal is to help you save water (and money). To start, may I ask a few questions about your daily water habits?"
 
-      <div>
-        <h3>Help & policies</h3>
-        <ul>
-          <li><a href="#">Help center</a></li>
-          <li><a href="#">Contact us</a></li>
-          <li><a href="#">Privacy policy</a></li>
-          <li><a href="#">Terms & conditions</a></li>
-        </ul>
-      </div>
+2. **The Diagnosis**: Ask the user 2-3 specific questions to estimate their usage. 
+   - "Do you take showers longer than 10 minutes?"
+   - "Do you leave the tap running while brushing teeth?"
+   - "Do you use a dishwasher or wash by hand?"
 
-      <div>
-        <h3>Organization</h3>
-        <ul>
-          <li><a href="../about/about.html">About us</a></li>
-          <li><a href="#">Our team</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Reports & transparency</a></li>
-        </ul>
-      </div>
+3. **The Solution**: Based on their answers, calculate a rough estimate of their waste and give 3 specific, technical tips to reduce it.
 
-    </div>
+4. **The "Nudge" (Donation)**: After providing value (tips), subtly mention the fundraising goal. Do not be pushy, but connect it to the impact. 
+   - Example: "By shortening your shower by 2 minutes, you save ~20 liters! If you'd like to make a bigger impact, we are currently 78% of the way to our $1M goal for the Safe Streams initiative. Every bit helps."
 
-    <div class="footer-icons">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-envelope"></i></a>
-    </div>
+TONE GUIDELINES:
+- Be encouraging but firm about the importance of saving water.
+- Use emojis sparingly (🌊, 💧, 🌍).
+- Keep responses concise (under 3 sentences per turn unless explaining a complex tip).
+`;
 
-    <div class="footer-bottom">
-      <p>
-        This website is an educational initiative aimed at raising awareness among children
-        about water conservation through games, articles, and community support.
-      </p>
-      <p>
-        © 2026 Water Awareness Initiative. All rights reserved.
-      </p>
-    </div>
-  </footer>
+        let chatHistory = [];
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+
+            appendMessage(message, 'user-message');
+            userInput.value = "";
+            const tempAiMsg = appendMessage("...", 'ai-message');
+
+
+            chatHistory.push({
+                role: "user",
+                parts: [{ text: message }]
+            });
+
+            try {
+
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        system_instruction: {
+                            parts: [{ text: systemPrompt }]
+                        },
+                        contents: chatHistory
+                    })
+                });
+
+                const data = await response.json();
+                
+
+                if (!data.candidates || data.candidates.length === 0) {
+                    throw new Error("No response from AI.");
+                }
+
+                const aiResponse = data.candidates[0].content.parts[0].text;
+                
+
+                tempAiMsg.innerHTML = formatText(aiResponse);
+
+
+                chatHistory.push({
+                    role: "model",
+                    parts: [{ text: aiResponse }]
+                });
+
+            } catch (error) {
+                tempAiMsg.textContent = "Error: Check API Key or Connection.";
+                console.error(error);
+            }
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function appendMessage(text, className) {
+            const div = document.createElement('div');
+            div.className = `message ${className}`;
+            div.innerHTML = formatText(text);
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return div;
+        }
+
+        function formatText(text) {
+            // Replaces **bold** with <b> and newlines with <br>
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                .replace(/\n/g, '<br>');
+        }
+
+
+        userInput.addEventListener("keypress", (e) => { 
+            if (e.key === "Enter") sendMessage(); 
+        });
+    </script>
 </body>
 </html>
