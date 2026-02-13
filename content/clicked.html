@@ -8,15 +8,27 @@
 <!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../root.css">
 
 <style>
-:root {
-    --p-blue: #0b3d91;
-    --s-blue: #1F6FB2;
-    --acc-cyan: #4CC9F0;
-    --text: #0b2d4a;
-}
+:root { --p-blue: #0b3d91; --text: #333; --mist-blue:#E6F2FA; --s-blue:#1F6FB2; --acc-cyan:#4CC9F0; --c-gray:#B8C7D6 ;--b-text: #0b2d4a}
 
+        /* ===== RESET & GENERAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            display: inline;
+        }
+        
+        .logo, .logo-text, .nav-links a, .donate-btn{
+        color: var(--s-blue);
+}
+.donate-btn{border-color:var(--s-blue);}
+.donate-btn:hover{background-color: var(--s-blue);color: var(--mist-blue);}
 /* ===== RESET & GENERAL ===== */
 * {
     margin: 0;
@@ -31,70 +43,9 @@ body {
     line-height: 1.6;
 }
 
-/* ===== NAVBAR ===== */
-#navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 60px;
-    background: #fff;
-    z-index: 9999;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    animation: slideDown .6s ease forwards;
-}
-.logo-wrap { display: flex; align-items: center; text-decoration: none; }
-.nav-logo-img { width: 140px; height: auto; display: block; }
-.nav-links { list-style: none; display: flex; gap: 34px; }
-.nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 15px;
-    font-weight: 500;
-    position: relative;
-    padding: 4px 0;
-    transition: color .3s ease;
-}
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 2px;
-    background: var(--acc-cyan);
-    transition: width .3s ease;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--p-blue); }
-.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
-.donate-btn {
-    text-decoration: none;
-    padding: 10px 26px;
-    border-radius: 20px;
-    border: 2px solid var(--acc-cyan);
-    color: var(--p-blue);
-    font-weight: 600;
-    transition: all .3s ease;
-}
-.donate-btn:hover {
-    background: var(--acc-cyan);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(76,201,240,.3);
-}
-
-@keyframes slideDown {
-  from { transform: translateY(-100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
 
 /* ===== ARTICLE ===== */
-.article-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+.article-container { max-width: 1000px; margin: 40px auto; padding: 100px 20px; }
 .video-box { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 35px; }
 .video-box video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .content-section { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
@@ -141,24 +92,31 @@ footer ul li a:hover { opacity: 1; text-decoration: underline; }
 <body>
 
 <!-- NAVBAR -->
-<nav id="navbar">
-    <a href="#" class="logo-wrap">
-        <img src="logo.jpeg" class="nav-logo-img" alt="Blue Bytes Logo">
+    <nav id="navbar">
+    <a href="../index.html" class="logo logo-wrap">
+        <img src="../assets/logo.png" alt="logo" class="nav-logo-img">
+
+        <div class="logo-text">
+            <h3>Blue bytes</h3>
+            <p>Future in every drop.</p>
+        </div>
     </a>
+
     <ul class="nav-links">
-        <li><a href="#">BlueByte AI</a></li>
-        <li><a href="#">BlueByte Game</a></li>
-        <li><a href="#">About us</a></li>
-        <li><a href="#" class="active">Articles & Content</a></li>
+        <li><a href="../ai/ai.html">BlueByte AI</a></li>
+        <li><a href="../game/game.html">BlueByte Game</a></li>
+        <li><a href="../content/content.html">Articles & Content</a></li>
+        <li><a href="../about/about.html">About us</a></li>
     </ul>
-    <a href="#" class="donate-btn">DONATE</a>
+
+    <a href="../donate/donate.html" class="donate-btn">DONATE</a>
 </nav>
 
 <!-- ARTICLE & VIDEO -->
 <div class="article-container">
     <div class="video-box">
         <video controls>
-            <source src="videoplayback (1).mp4" type="video/mp4">
+            <source src="../assets/videoplayback (1).mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -210,68 +168,85 @@ footer ul li a:hover { opacity: 1; text-decoration: underline; }
 </div>
 
 <!-- FOOTER -->
-<footer>
+   <footer>
     <div class="footer-grid">
-        <div>
-            <h3>BlueByte</h3>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Our mission</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Games and learning</h3>
-            <ul>
-                <li><a href="#">First game</a></li>
-                <li><a href="#">Second game</a></li>
-                <li><a href="#">Third game</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Articles & content</h3>
-            <ul>
-                <li><a href="#">Water waste articles</a></li>
-                <li><a href="#">Tips to save water</a></li>
-                <li><a href="#">Research & facts</a></li>
-                <li><a href="#">Resources</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Donation</h3>
-            <ul>
-                <li><a href="#">Donate now</a></li>
-                <li><a href="#">Where donations go</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Help & policies</h3>
-            <ul>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Privacy policy</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Organization</h3>
-            <ul>
-                <li><a href="#">Our team</a></li>
-                <li><a href="#">Careers</a></li>
-            </ul>
-        </div>
+
+      <div>
+        <h3>BlueByte</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about/about.html">About</a></li>
+          <li><a href="../about/about.html">Our mission</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Games and learning</h3>
+        <ul>
+          <li><a href="#">First game</a></li>
+          <li><a href="#">Second game</a></li>
+          <li><a href="#">Third game</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Articles & content</h3>
+        <ul>
+          <li><a href="../content/content.html">Water waste articles</a></li>
+          <li><a href="../content/content.html">Tips to save water</a></li>
+          <li><a href="../content/content.html">Research & facts</a></li>
+          <li><a href="../content/content.html">Resources</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Donation</h3>
+        <ul>
+          <li><a href="../donate/donate.html">Donate now</a></li>
+          <li><a href="../donate/donate.html">Where donations go</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Help & policies</h3>
+        <ul>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms & conditions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Organization</h3>
+        <ul>
+          <li><a href="../about/about.html">About us</a></li>
+          <li><a href="#">Our team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Reports & transparency</a></li>
+        </ul>
+      </div>
+
     </div>
 
     <div class="footer-icons">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-envelope"></i></a>
     </div>
 
     <div class="footer-bottom">
-        <p>This website is an educational initiative aimed at raising awareness among children about water conservation through games, articles, and community support.</p>
-        <p>© 2026 Water Awareness Initiative. All rights reserved.</p>
+      <p>
+        This website is an educational initiative aimed at raising awareness among children
+        about water conservation through games, articles, and community support.
+      </p>
+      <p>
+        © 2026 Water Awareness Initiative. All rights reserved.
+      </p>
     </div>
-</footer>
+  </footer>
+    <script src="../root.js"></script>
 
 </body>
 </html>
