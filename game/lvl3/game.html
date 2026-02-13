@@ -165,7 +165,9 @@ body {
 </head>
 
 <body>
-
+<audio id="bg-music" loop>
+    <source src="../../assets/backgroundmusic.mpeg" type="audio/mpeg">
+</audio>
 <div id="game">
 
     <div class="hud">
@@ -195,6 +197,14 @@ body {
 
 <script>
 /* SPRITES */
+/* MUSIC SETUP */
+const music = document.getElementById("bg-music");
+document.addEventListener("click", () => {
+    if (music && music.paused) {
+        music.volume = 0.3;
+        music.play().catch(e => console.log("Audio play failed:", e));
+    }
+}, { once: true });
 const SPRITE = {
     IDLE: "url('girl_idle.png')",
     BRUSH: "url('girl_brush.png')",

@@ -5,7 +5,14 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const endScreen = document.getElementById("endScreen");
 const restartButton = document.getElementById("restartButton");
+const music = document.getElementById("bg-music");
 
+document.addEventListener("click", () => {
+    if (music && music.paused) {
+        music.volume = 0.3;
+        music.play().catch(e => console.log("Audio play failed:", e));
+    }
+}, { once: true });
 /* =========================
    PHYSICS
 ========================= */

@@ -1,13 +1,19 @@
+/* ==========================================================================
+   GAME CONFIGURATION & ASSETS
+   - Defines image paths, audio setup, and level difficulty settings.
+   - Sets up the AudioContext for generating dynamic sound effects.
+   ========================================================================== */
 const PATH = '../../assets/';
 const SOILS = ['soil1', 'soil2', 'soil3']; 
 const CROPS = ['crop1.png', 'crop2.png', 'crop3.png', 'crop4.png', 'crop5.png'];
-const music =
-    dpcument.getElementById(bg-music);
-document.addElementListener("click", () => {
-    ,usic.volume =0.3;
-                           music.play();
-}, { once" true});
-// --- LEVEL CONFIGURATION (Difficulty Scaling) ---
+const music = document.getElementById("bg-music");
+
+document.addEventListener("click", () => {
+    if (music.paused) {
+        music.volume = 0.3;
+        music.play().catch(e => console.log("Audio play failed:", e));
+    }
+}, { once: true });
 const LEVELS = [
     { name: "Level 1: Garden Starter", rows: 6, cols: 8, plants: 3, rocks: 0 },
     { name: "Level 2: Rocky Terrain", rows: 8, cols: 10, plants: 6, rocks: 4 },
@@ -23,6 +29,12 @@ let ROWS, COLS, PLANT_COUNT, ROCK_COUNT;
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+/* ==========================================================================
+   DYNAMIC AUDIO SYSTEM
+   - Instead of loading MP3 files for every sound, we use Oscillators.
+   - This generates sounds mathematically (Sine/Triangle waves) in real-time.
+   - Handles: 'place', 'remove', 'water' (flow), 'win', and 'fail' sounds.
+   ========================================================================== */
 function playSound(type) {
     if (audioCtx.state === 'suspended') audioCtx.resume();
     const osc = audioCtx.createOscillator();
@@ -55,6 +67,12 @@ function playSound(type) {
     }
 }
 
+/* ==========================================================================
+   LEVEL INITIALIZATION
+   - Clears the board and generates the grid based on ROWS/COLS.
+   - Creates DOM elements for Soil, Objects (Tank/Rocks), and Crops.
+   - Resets state variables (pipesUsed, grid array).
+   ========================================================================== */
 function init(levelIndex = 0) {
     if (levelIndex >= LEVELS.length) levelIndex = 0;
     currentLevelIdx = levelIndex;
@@ -108,6 +126,12 @@ function init(levelIndex = 0) {
     document.getElementById('status-text').innerText = "Ready";
 }
 
+/* ==========================================================================
+   OBJECT PLACEMENT (RNG)
+   - Randomly places Tank, Holes, Plants, and Rocks.
+   - Includes logic to prevent items from overlapping.
+   - Special Rule: Rocks cannot be placed directly next to the tank.
+   ========================================================================== */
 function place(type, count) {
     let placed = 0;
     let attempts = 0;
@@ -143,6 +167,12 @@ function place(type, count) {
     }
 }
 
+/* ==========================================================================
+   ALGORITHM: CALCULATE OPTIMAL PIPES (BFS)
+   - Uses Breadth-First Search (BFS) to find the shortest path around rocks.
+   - Acts as the "Efficiency Score" baseline.
+   - Calculates distance from the network (Tank + connected pipes) to unconnected plants.
+   ========================================================================== */
 // --- NEW SMART AI (BFS Pathfinding) ---
 // This calculates the TRUE shortest path around rocks
 function calculateOptimalPipes() {
@@ -219,6 +249,12 @@ function calculateOptimalPipes() {
     return totalPipesNeeded;
 }
 
+/* ==========================================================================
+   USER INTERACTION
+   - Handles clicking tiles to add or remove pipes.
+   - Prevents interaction with Rocks, Tanks, and Plants.
+   - Triggers the visual update and score calculation.
+   ========================================================================== */
 function clickTile(r, c) {
     let cell = grid[r][c];
     
@@ -244,6 +280,12 @@ function clickTile(r, c) {
     updateScoreUI();
 }
 
+/* ==========================================================================
+   SCORE & EFFICIENCY
+   - Calculates the percentage score.
+   - Compares user's 'pipesUsed' vs the AI's 'optimalPipes'.
+   - Updates the UI bar color (Blue=Good, Yellow=Okay, Red=Bad).
+   ========================================================================== */
 function updateScoreUI() {
     document.getElementById('score-used').innerText = pipesUsed;
     let efficiency = 100;
@@ -262,6 +304,12 @@ function updateScoreUI() {
     else bar.style.background = "#e74c3c";
 }
 
+/* ==========================================================================
+   AUTO-TILING / VISUAL LOGIC
+   - Determines the shape of the pipe based on its neighbors (N, S, E, W).
+   - Assigns CSS classes: Straight, Corner, T-Shape, Cross.
+   - Handles rotation (0, 90, 180, 270 degrees) so pipes connect visually.
+   ========================================================================== */
 function updateVisuals() {
     const dirs = { n:[-1,0], e:[0,1], s:[1,0], w:[0,-1] };
     
@@ -339,6 +387,13 @@ function updateVisuals() {
     }
 }
 
+/* ==========================================================================
+   GAME SUBMISSION & SIMULATION
+   - Uses BFS again to animate water flowing from the Tank.
+   - The water can only flow through Pipes, Plants, and Holes.
+   - Checks if every plant in the grid has been "watered" (visited).
+   - Shows Success or Fail modal.
+   ========================================================================== */
 document.getElementById('submit-btn').onclick = async () => {
     let queue = [tankPos];
     let visited = new Set([`${tankPos.r},${tankPos.c}`]);
